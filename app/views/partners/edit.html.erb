@@ -1,0 +1,13 @@
+
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@partner.concert) %>
+  | <%= link_to 'К списку', concert_partners_path %>
+  | <%= link_to 'Удалить', concert_partner_path(@concert, @partner), method: :delete, data: { confirm: 'Вы уверены что хотите удалить этого партнера ?' } %>
+  | <%= link_to 'Новый', new_concert_partner_path(@concert), data: {confirm: 'Несохраненные данные будут утеряны, Да ?'} %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to_function 'Отменить', "$('input[name=cancel]').first().click()" %>
+  | <%= link_to '0', [@concert, @partner] %>
+  |
+<% end %>
+<%= h1andcontent "Редактирование партнера #{@partner.name}, #{@concert.year}" %>
+<%= render 'form' %>

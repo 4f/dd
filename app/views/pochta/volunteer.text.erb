@@ -1,0 +1,13 @@
+          
+
+  Анкета Волонтера.
+
+  Дата:     <%= @mail.created_at.strftime("%d.%m.%y %H:%M:%S %Z")  %>
+  IP:       <%= @mail.ip %>
+  Имя:      <%= @mail.name %>
+  Возраст:  <%= @mail.age %>
+  Телефон:  <%= @mail.phone %>
+  Почта:    <%= @mail.email %>
+  Текст:
+
+  <%= @mail.text %>

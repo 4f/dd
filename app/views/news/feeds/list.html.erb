@@ -1,0 +1,59 @@
+<% provide(:title, t('global.title')) %>
+
+<div class="news-page-content">
+  <div class="container">
+    <div class="top-info-content">
+
+      <div class="inner-space">
+        <h1><%= t 'news.news' %></h1>
+      </div>
+
+    </div>
+    <div class="p-news">
+
+      <div class="inner-space">
+        <div class="news-nav">
+
+          <div class="row">
+            <div class="m-box-2">
+              <ul><span><%= t 'news.tags' %>:</span>
+                <%= content_tag :li, link_to('', r: params[:r]), class: "delete#{' active' if params[:t]==[]}" %>
+                <% News::Tag.all.each do |tag| %>
+                  <li>
+                    <%= tag_to_link tag, 't', 'r' %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="m-box-2">
+              <ul><span><%= t 'news.rubric' %>:</span>
+                <%= content_tag :li, link_to("", t: params[:t]), class: "delete#{' active' if params[:r]==[]}" %>
+                <% News::Rubric.all.each do |rubric| %>
+                  <li>
+                    <%= tag_to_link rubric, 'r', 't' %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="news-line">
+          <span><i></i></span>
+        </div>
+      </div>
+
+
+      <%= render @news %>
+
+
+      <div class="triangle-gray-up"></div>
+      <div class="wrap-paginatior">
+        <div class="inner-space">
+          <%= paginate @news, theme: 'vovan' %> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

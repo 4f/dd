@@ -1,0 +1,56 @@
+
+<style>
+  nav.pagination{
+    padding-top: 12px;
+    font-size: 14px;
+    font-family: courier;
+    padding-left: 256px;
+  }
+  nav.pagination a{
+    padding-top: 12px;
+    font-size: 14px;
+    font-family: courier;
+    background: #eee;
+    font-weight: 700;
+    padding: 0px 4px;
+    margin-top: 3px;
+  }
+  nav.pagination a:hover{
+    background: yellow;
+  }
+  #current {
+    background: #ccf;
+  }
+</style>
+
+<% content_for :lnks2 do %>
+  | <%= link_to 'Новая', new_news_feed_path %>
+  | <%= link_to 'Тэг/Рубрика', :tags_news_feeds %>
+  | <%= link_to '0', :news %>
+  |
+<% end %>
+
+<%= h1andcontent "Новости (#{@news.count}/#{News::Feed.count})" %>
+
+<%= paginate @news %> 
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @news.each do |news| %>
+  <tr>
+    <td><b><%= news.date.strftime( "%d.%m.%y" ) %></b></td>
+    <td><%= news.title %></td>
+    <td>
+      <%= link_to 'Просмотр', news %> |
+      <%= link_to 'Изменить', edit_news_feed_path(news) %> |
+      <%= link_to 'Удалить', news_feed_path(news), method: :delete, data: { confirm: 'Вы уверены в удалении ?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<%= paginate @news %> 

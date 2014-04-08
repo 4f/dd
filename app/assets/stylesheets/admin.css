@@ -1,0 +1,173 @@
+
+body{
+  padding-left: 30px;
+  padding-top: 2px;
+  padding-bottom: 20px;
+  padding-right: 5px;
+  font-family: arial;
+  font-size: 12px;
+}
+
+#link_adname{
+  float: right;
+}
+/* for cke */
+  #hhhhh {
+    border: 1px solid blue; }
+
+  .media-blocks span{
+    display: none; }
+
+  .media-blocks img{
+    width: 45%;
+    margin: 2%;
+    float: left;
+    border: 1px solid red; }
+
+  .raw {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    display: block; }
+
+  .row:after {
+    display: block;
+    content: '.';
+    height: 0;
+    visibility: hidden;
+    clear: both; }
+
+  .t-box-2{
+    float: left;
+    margin-right: 30px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 48%;
+    vertical-align: baseline; }
+
+  .t-box-2:hover{
+    background: #eee; }
+
+
+
+
+h1{
+  font-family: arial;
+}
+
+a.langcheck{
+  background: blue;
+  font-weight: 700;
+  color: white;
+  padding-left: 2px;
+  padding-right: 1px;
+}
+
+a.lang u.fl{
+  font-size: 6pt;
+}
+a.langcheck u.fl{
+  color: yellow;
+  font-size: 6pt;
+}
+
+u.fl{
+  font-weight: 700;
+  /*background: #eee;*/
+  color: #d00;
+  text-decoration: none;
+}
+
+.field input{
+  padding-left: 12px;
+}
+
+.field textarea{
+  padding-left: 12px;
+  padding-top: 3px;
+  padding-bottom: 6p;
+}
+
+.field label, .field a.open{
+  margin: 0px 12px 0px 12px;
+  font-weight: 700;
+  font-family: arial;
+  font-size: 14px;
+}
+
+table{
+  font-family: arial;
+  font-size: 14px;
+}
+table td{
+  padding-right: 8px;
+}
+table tr:hover{
+  background: #eee;
+}
+
+a {
+  text-decoration: none;
+  font-family: tahoma;
+  font-size: 10pt;
+}
+a:hover{
+  background: yellow;
+}
+a.link_image img{
+  border: 2px solid transparent;
+  /*margin: 2px;*/
+} 
+a.link_image:hover img{
+  border: 2px solid yellow;
+}
+
+
+
+.top_line{
+  border-top: 1px solid #ccc;
+  width: 30%;
+  margin-top: 6px;
+}
+.bottom_line{
+  border-bottom: 1px solid #ccc;
+  width: 40%;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+
+  #notice {
+    font-family: monospace;
+    color: green;
+    text-align: center;
+    background: #eee;
+    /*margin-left: 12px;*/
+    width: 333px;
+    margin-top: -17px;
+    margin-bottom: 2px;
+    margin-left: 20%;
+  }
+  #notice:empty {
+    display: none;
+  }
+
+  .field_with_errors {
+    color: #f00;
+    display: inline;
+  }
+  .field_with_errors label {
+    border-bottom: 1px dotted red;
+  }
+  #error_explanation{
+    margin-top: -16px;
+    font-family: tahoma;
+    font-size:  10px;
+    color: red;
+  }
+  #error_explanation ul{
+    margin-top: -12px;
+    margin-bottom: 24px;
+  }

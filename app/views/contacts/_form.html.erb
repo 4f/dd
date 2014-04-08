@@ -1,0 +1,20 @@
+<% #in index for multi %>
+
+<div class='fields'>
+  <div class='field'>
+    <% ci.each do |i| %>
+    <% #debugger %>
+      <%= fields_for "c[id][#{i.id}]", i do |cc| %>
+        <span>
+          <%= cc.text_field :text %>
+          <%= hidden_field_tag "c[id][#{i.id}][multi]", index %>
+          <%= link_to_function "Удалить", 'hide_input(this)'%>
+          <br/>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
+  <%= link_to_function "Добавить", "add_input(#{index}, this)", id: "add#{index}" %>
+  <br/>
+  <br/>
+</div>

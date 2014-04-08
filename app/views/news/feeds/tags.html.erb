@@ -1,0 +1,78 @@
+
+<style>
+  td {
+    vertical-align:top;
+    padding: 10px 30px;
+  }
+  input[type='text'] {
+    width: 150px;
+    margin-right: 5px;
+    font-family: monospace;
+  }
+  a.link_add {
+    float: right;
+    margin-top: 16px;
+  }
+</style>
+
+<% content_for :lnks2 do %>
+  <% if params.key?(:feed) %>
+    | <%= link_to( 'Вернуться к новости', edit_news_feed_path(params[:feed]) ) %>
+  <% end %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to_function 'Отменить', "$('input[name=cancel]').first().click()" %>
+  | <%= link_to_function '+тэг', "$('#tag_link').first().click()" %>
+  | <%= link_to_function '+рубрика', "$('#rubric_link').first().click()" %>
+  | <%= link_to 'Новости', :news_feeds %>
+  | <%= link_to '0', :news %>
+  |
+<% end %>
+
+
+<%= h1andcontent "Тэги (#{@tags.count}) и Рубрики (#{@rubric.count})" %>
+
+<%= form_tag tags_update_news_feeds_path(feed: params[:feed]) do %>
+  
+  <table>
+    <tr>
+      <td>
+
+        <div class='fields'>
+          <% @tags.each do |i| %>
+            <div class='f'>
+              <% #debugger %>
+              <%= fields_for "tag[id][#{i.id}]", i do |tt| %>
+                Тэг: <%= tt.text_field :name %>
+                <%= link_to_function "Удалить", 'hide_tag(this)'%>
+                <br/>
+              <% end %>
+            </div>
+          <% end %>
+          <%= link_to_function "Добавить", "add_tag(this, 'Тэг', 'tag')", class: :link_link, id: :tag_link %>
+        </div>
+      </td>
+
+      <td>
+        <div class='fields'>
+          <% @rubric.each do |i| %>
+            <div class='f'>
+              <%= fields_for "rubric[id][#{i.id}]", i do |tt| %>
+                Рубрика: <%= tt.text_field :name %>
+                <%= link_to_function "Удалить", 'hide_tag(this)'%>
+                <br/>
+              <% end %>
+            </div>
+          <% end %>
+          <%= link_to_function "Добавить", "add_tag(this, 'Рубрика', 'rubric')", class: :link_add, id: :rubric_link %>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <%= submit_tag "Обновить" %>
+  <%= submit_tag "Отмена", name: 'cancel' %>
+  
+<% end %>
+
+
+

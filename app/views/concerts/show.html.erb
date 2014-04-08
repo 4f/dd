@@ -1,0 +1,39 @@
+<% provide(:title, t('global.title')) %>
+
+<div class="concert-content">
+  <div class="container">
+    <div class="top-info-content">
+      <div class="inner-space">
+        <h1><%= t "concert.title" %></h1>
+      </div>
+    </div>
+    <div class="p-concerts">
+      <div class="inner-space">
+        
+        <div class="nav-concert-year">
+          <ul>
+            <%= render 'template/top_paginator', in_path: :concert_path %>
+          </ul>
+        </div>
+
+        <%= content_tag :h1, @concert.title %>
+        <%= content_tag :div, raw(@concert.text1) %>
+        <%= render 'template/carousels', number: 1 %>
+        <%= content_tag :div, raw(@concert.text2) %>
+        <%= content_tag :h1, @concert.title2 %>
+        <%= render 'template/carousels', number: 2 %>
+        <%= content_tag :div, raw(@concert.text3) %>
+
+      </div>
+
+      <div class="triangle-gray-up"></div>
+        <%= render 'partners' %>
+      </div>
+      <div class="slice-block"></div>
+
+      <%= render 'template/bottom_paginator', in_next: @concert.next, in_prev: @concert.prev %>
+
+      </div>
+    </div>
+  </div>
+</div>

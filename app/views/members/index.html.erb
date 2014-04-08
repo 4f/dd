@@ -1,0 +1,40 @@
+#endcoding: UTF-8
+<% #debugger %>
+
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@concert) %>
+  | <%= link_to 'Добавить', :new_concert_member %>
+  | <%= link_to 'Флаги', :flags %>
+  | <%= link_to '0', concert_members_page_path(@concert, @concert.members_page) %>
+  |
+<% end %>
+<%= h1andcontent "Список участников (#{@members.count}), #{@concert.year}" %>
+
+
+<table>
+  <% @members.each do |member| %>
+    <tr>
+      <td align='center'>
+        <%= image_tag member.foto.url(:sm) %>
+      </td>
+      <td>
+        <b><%= member.name %></b><br/>
+        <%= image_tag member.flag.image.url %>
+        <span style="font-size:12px;font-style:italic">
+          <%= member.flag.country %>, <%= member.city %>
+        </span>
+      </td>
+      <td style='font-size:12px; font-style:italic'>
+        <%= print_role member.role %>
+      </td>
+      <td>
+        <%= link_to_unless member.link.blank?, remove_http(member.link), member.link, target: :_blank %>
+      </td>
+      <td>
+        <%= link_to 'Просмотреть', concert_member_path(member.concert, member) %> |
+        <%= link_to 'Изменить', edit_concert_member_path(member.concert, member) %> |
+        <%= link_to 'Удалить', concert_member_path(member.concert, member), method: :delete, data: { confirm: 'Вы уверены что хотите удалить данного участника ? Он хороший.' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

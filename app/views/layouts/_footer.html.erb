@@ -1,0 +1,24 @@
+<footer class="footer">
+  <div class="triangle-gray-down"></div>
+  <div class="footer-wrap">
+    <div class="row">
+      <div class="m-box-4">
+        <a class="logo-footer" href="http://www.pchelka.ua/" target="_blank"><img src="/assets/footer-logo-pchelka.png" alt=""></a>
+      </div>
+      <div class="m-box-2">
+        <ul class="social">
+          <% Contact::SOCIAL.each_with_index do |v, i| %>
+            <%= content_tag( :li, link_to( '', Contact.find(100+i).text, class: v, target: :_blank)) unless Contact.find(100+i).text.blank? %>
+          <% end %>
+        </ul>
+        <p class="copyright"><%= t 'footer.copyrightfirst' %><span><a href="http://www.pchelka.ua/" target="_blank"><%= t 'footer.copyrightname' %></a></span> ® 2008–2014</p>
+      </div>
+      <div class="m-box-4">
+        <div class="developer-info">
+          <p><%= t 'footer.designed' %><span><a href="http://killers.com.ua/" target="_blank">killers.com.ua</a></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<%= javascript_include_tag "dd_bottom" %>

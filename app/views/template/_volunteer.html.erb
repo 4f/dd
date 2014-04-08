@@ -1,0 +1,20 @@
+<div class="volunteer-modal" style="display: none;">
+  <div class="close-popup"></div>
+  <h1><%= t 'volback.title_vol' %></h1>
+  <%= form_for :volunteer, url: :volunteer_mailics, remote:true, method: :post do |f| %>
+    <%= f.text_field :name, placeholder: t('volback.fio'), size: nil %>
+    <%= f.text_field :age, placeholder: t('volback.age'), size: nil %>
+    <%= f.text_field :phone, type: :tel, placeholder: t('volback.tel'), size: nil %>
+    <%= f.text_field :email, type: 'e-mail', placeholder: t('volback.email'), size: nil %>
+    <%= f.text_area :text, placeholder: t('volback.text'), cols: nil, rows: nil %>
+    <%= f.hidden_field :tipo, value: '1' %>
+
+    <div class="bottom-modal">
+      <div class="captcha">
+        <%= show_simple_captcha input_html: {class: 'captcha-enter', required: nil}, placeholder: '' %>
+      </div>
+      <button onclick="$('.close-popup').click()" class="send-msg btn-red"><%= t 'volback.send' %></button>
+    </div>
+    <%= f.text_field :bt_flag, placeholder: 'isee', size: nil, style: 'display:none' %>
+  <% end %>
+</div>

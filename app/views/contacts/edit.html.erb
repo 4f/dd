@@ -1,0 +1,96 @@
+
+<style>
+
+  input[type=text]{
+    width: 481px; }
+
+  .field a{
+    padding-left: 6px;
+  }
+
+  .vk { background: url(/assets/sprite.png) no-repeat -2px -136px; }
+  .vk:hover { background: url(/assets/sprite.png) no-repeat -2px -170px; }
+  .facebook { background: url(/assets/sprite.png) no-repeat -36px -136px; }
+  .facebook:hover {background: url(/assets/sprite.png) no-repeat -36px -170px; }
+  .twitter { background: url(/assets/sprite.png) no-repeat -70px -136px; }
+  .twitter:hover { background: url(/assets/sprite.png) no-repeat -70px -170px; }
+  .g-plus { background: url(/assets/sprite.png) no-repeat -104px -136px; }
+  .g-plus:hover { background: url(/assets/sprite.png) no-repeat -104px -170px; }
+  .linkedin { background: url(/assets/sprite.png) no-repeat -138px -136px; }
+  .linkedin:hover { background: url(/assets/sprite.png) no-repeat -138px -170px; }
+  .odnoklassniki { background: url(/assets/sprite.png) no-repeat -172px -136px; }
+  .odnoklassniki:hover { background: url(/assets/sprite.png) no-repeat -172px -170px; }
+  .forum-od { background: url(/assets/sprite.png) no-repeat -206px -136px; }
+  .forum-od:hover { background: url(/assets/sprite.png) no-repeat -206px -170px; }
+
+  .footer a {
+    display: inline-block;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    width: 32px;
+    height: 32px; }
+</style>
+
+<% content_for :lnks2 do %>
+  | <%= link_to 'Команда', :teams %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to_function 'Сбросить', "$('input[name=cancel]').first().click()" %>
+  | <%= link_to '0', :contacts %>
+  |
+<% end %>
+
+<%= h1andcontent "Редактирование контактной информации" %>
+
+<%= form_tag contacts_path do %>
+
+<div class='field'>
+  <% 0..4.times do |i| %>
+    <%= label_tag @cnt[i].count == 0 ? "add#{i}" : "c_id_#{@cnt[i][0].id}_text", @contact_text[i] %>
+    <%= render partial: 'form', locals: {ci: @cnt[i], index: i} %>
+  <% end %>
+</div>
+
+<div class='field'>
+  <%= label_tag :text, 'ТЕКСТ' %><br/>
+  <%= text_area_tag :text, @text, cols: 58 %>
+</div>
+
+  <br/>  <br/>
+
+    
+  <table class='footer'>
+    <% Contact::SOCIAL.each_with_index do |c, i| %>
+      <tr>
+        <td>
+          <%= link_to '', Contact.find_or_create_return_text(100+i), class: c, target: :_blank %>
+        </td>
+        <td>
+          <%= text_field_tag "c[id][#{100+i}][text]", remove_http(Contact.find(100+i).text), style: 'padding-left: 12px;width:436px' %>
+          <%= hidden_field_tag "c[id][#{100+i}][multi]", 5 %>
+        </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+  <br/>
+
+  <div class='field'>
+    <%= label_tag :emails, 'Адрес для обратной связи' %><br/>
+    <%= text_area_tag :emails, @emails, cols: 58 %>
+  </div>
+
+  <br/>
+
+
+  <%= submit_tag "Сохранить изменения" %>
+  <%= submit_tag "Отмена", name: 'cancel' %>
+
+<% end %>
+
+
+
+

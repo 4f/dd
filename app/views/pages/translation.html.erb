@@ -1,0 +1,101 @@
+
+
+<% content_for :lnks2 do %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to_function 'Сбросить', "$('input[name=cancel]').first().click()" %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+<%= h1andcontent "Редактирование языковой составляющей RU/EN" %>
+
+
+<br/>
+<%= form_tag update_translation_path, method: :post do %>
+  <% @data_ru.each do | k, v | %>
+    <span class='group1'>
+      <%= content_tag :span, k, class: :level1 %>
+      <br/>
+      <% v.each do | k2, v2 | %>
+        <span class='level2'>
+          <%= content_tag :span, "#{k2}", class: :level3, title: v2 %>
+          <% if v2.length < 99 %>
+            <%= text_field_tag "ru[#{k}][#{k2}]", v2, placeholder: v2, title: v2, disabled: true %>
+            <%= text_field_tag "en[#{k}][#{k2}]", @data_en[k][k2], placeholder: @data_en[k][k2], title: @data_en[k][k2] %>
+          <% else %>
+            <%= text_area_tag "ru[#{k}][#{k2}]", v2, placeholder: v2, title: v2, disabled: true %>
+            <%= text_area_tag "en[#{k}][#{k2}]", @data_en[k][k2], placeholder: @data_en[k][k2], title: @data_en[k][k2] %>
+          <% end %>
+          <br/>
+        </span>
+      <% end %>
+    </span>
+    <div style='clear:both'></div>
+  <% end %>
+
+  <br/>
+  <span class='group1'>
+    <%= submit_tag 'Записать', style: 'margin-left:132px' %>
+    <%= submit_tag "Сбросить", name: 'cancel' %>
+  </span>
+  
+<% end %>
+
+
+<style>
+  .group1{
+    width: 819px;
+  }
+  .level1{
+    font-weight: 700;
+    font-family: arial;
+    padding-left: 24px;
+  }
+  .level3{
+    width: 111px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .level2{
+    font-family: tahoma;
+    padding-left: 6px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .level2:hover{
+    background: #ddd;
+  }
+  input{
+    font-family: tahoma;
+    padding-left: 6px;
+    width: 333px;
+  }
+  textarea{
+    font-family: tahoma;
+    width: 333px;
+    padding-left: 6px;
+    vertical-align: top;
+  }
+  input[type=text]:hover{
+    border-color: #555;
+    font-style: italic;
+    color: green;
+  }
+  textarea:hover{
+    border-color: #555;
+    color: green;
+  }
+  input:focus{
+    background: yellow;
+  }
+  textarea:focus{
+    background: yellow;
+  }
+  .group1{
+    display: inline-block;
+  }
+  .group1:hover{
+    background: #eee;
+  }
+
+</style>
+

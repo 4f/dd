@@ -1,0 +1,75 @@
+
+<style>
+  nav.pagination{
+    padding-top: 12px;
+    font-size: 14px;
+    font-family: courier;
+    padding-left: 256px;
+  }
+  nav.pagination a{
+    padding-top: 12px;
+    font-size: 14px;
+    font-family: courier;
+    background: #eee;
+    font-weight: 700;
+    padding: 0px 4px;
+    margin-top: 3px;
+  }
+  nav.pagination a:hover{
+    background: yellow;
+  }
+  #current {
+    background: #ccf;
+  }
+</style>
+
+<% content_for :lnks2 do %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+<%= h1andcontent "Письма счастья (#{@mails.count}/#{Mailic.all.count})" %>
+<small><b>
+  V: <%= Gsetting.mail_volunteers %>
+  C: <%= Gsetting.mail_callbacks %>
+  S: <%= Gsetting.mail_spams %>
+  N: <%= Gsetting.mail_not_captchas %>
+</b></small>
+<%= paginate @mails %> 
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @mails.each do |mail| %>
+    <tr>
+      <td>
+        <%= mail.tipo == 1 ? 'v' : mail.tipo == 2 ? 'c' : 's' %>
+      </td>
+      <td>
+        <%= mail.created_at.strftime("%d.%m %H:%M") %>
+      </td>
+      <td>
+        <%= mail.ip %>
+      </td>
+      <td>
+        <%= mail.name %>
+      </td>
+      <td>
+        <%= mail.age %>
+      </td>
+      <td>
+        <%= mail.phone %>
+      </td>
+      <td>
+        <%= mail.email %>
+      </td>
+
+      <td>
+        <%= link_to 'Просмотр', mail %> |
+        <%= link_to 'Удаление', mail, method: :delete, data: { confirm: 'Вы уверены в том, чтобы удалить данное послание ?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @mails %> 

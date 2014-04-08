@@ -1,0 +1,105 @@
+<style>
+
+div.field{
+  margin-bottom: 6px;
+  width: 668px; 
+}
+.field input[type="number"]{
+  width: 50px;
+}
+.field input{
+  font-family: monospace;
+  width: 548px; 
+  float: right;
+  margin-bottom: 12px;
+}
+</style>
+<script>
+  function send(){
+      $.ajax({
+          url: '<%= insert_media_news_feeds_path %>',
+          data: $('#media_albom, #media_video').serialize(),
+          dataType: "script",
+          type: 'POST',
+          success: function(data){ $('#notice').text('Сделано!').show().delay(5000).fadeOut('slow'); }});
+      return false;
+  }
+</script>
+
+
+<%= form_for @news, html: {multipart: true} do |f| %>
+
+  <%= render partial: 'template/error', object: @news %>
+  
+  <div class="field">
+    <%= f.label :title, "Заглавие" %>
+    <%= f.text_field :title, placeholder: 'title' %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :preambula, "Преамбула" %><br/>
+    <%= f.text_area :preambula, rows_by_cols_and_content(@news.preambula, 80).merge(id: :ce_1, placeholder: 'preambula') %>
+  </div>
+  <div class="field">
+    <%= f.label :text, "Основной текст" %><br/>
+    <%= f.text_area :text, rows_by_cols_and_content(@news.text, 80).merge(id: :ce_2, placeholder: 'title', placeholder: 'main_text') %>
+  </div>
+    <%= collection_select :media, :albom, Albom.joins(:concert).reorder('year DESC'), :id, :year_title, prompt: 'Выбор альбома', name: :albom %>
+    <%= collection_select :media, :video, Video.joins(:concert).reorder('year DESC'), :id, :year_title, prompt: 'Выбор видео' %>
+      <%= link_to 'Вставить в основной текст', '', onclick: "send();return false;" %>
+  <br/>
+  <br/>
+
+
+  <div class="field" style='display: inline-block; width: 444px'>
+    <%= f.label :author, "Автор" %>
+    <%= f.text_field :author, style: 'float:none; width: 288px', placeholder: 'author' %>
+  </div>
+  <div class="field" style="display: inline-block; width: 222px">
+    <%= f.label :date, "Дата" %>
+    <%= f.date_select :date, order: [:day,:month,:year], use_two_digit_numbers: true, placeholder: 'date' %>
+  </div>
+
+  <br/>
+
+  <div class="field" style="display: inline-block; width: 111px">
+    <span class='second_links'>
+      <%= link_to "Тэги", tags_news_feeds_path( feed: @news.id ), class: :open %>
+    </span>
+    <br/>
+
+    <%= f.collection_select :tag_ids, (News::Tag.all), :id, :name,{}, {multiple: true, size: 19, style: 'width:99px'} %><br/>
+    <%= f.label :new_tag_name, "добавить" %><br/>
+    <%= f.text_field :new_tag_name, style: "float: none; width: 95px", placeholder: 'new_tag' %>
+    <div style="clear:both"></div>
+  </div>
+  <div class="field" style="display: inline-block; width: 111px">
+    <span class='second_links'>
+      <%= link_to "Рубрики",tags_news_feeds_path( feed: @news.id ), class: :open %>
+    </span>
+    <br/>
+    <%= f.collection_select :rubric_ids, (News::Rubric.all), :id, :name,{}, {multiple: true, size: 19, style: 'width: 99px'} %><br/>
+    <%= f.label :new_rubric_name, "добавить" %><br/>
+    <%= f.text_field :new_rubric_name, style: "float: none; width: 95px", placeholder: 'new_rubric' %>
+  </div>
+  <div style="width: 400px; display: inline-block">
+    <div class="field">
+      <%= f.label :foto, "Фото", style: 'width: 44px' %>
+      <%= f.file_field :foto, style: 'float: none', accept: "image/*" %>
+    </div>
+    <%= image_tag @news.foto.url if @news.foto.exists? %>
+  </div>
+  
+</table>
+
+  <div class="actions">
+    <%= f.submit "Записать" %>
+    <%= f.submit "Отмена", name: 'cancel' %> 
+  </div>
+
+<% end %>
+
+<script>
+  CKEDITOR.replace( 'ce_1' );
+  CKEDITOR.replace( 'ce_2' );
+</script>

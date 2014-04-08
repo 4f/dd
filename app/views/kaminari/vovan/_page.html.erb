@@ -1,0 +1,3 @@
+<li class="<%= page.last? && total_pages.to_i - current_page.to_i > 5 ? "ttl" : "num" %>">
+  <%= link_to page, page.current? ? "#" : url, { class: page.current? ? "active" : "" } %>
+</li>

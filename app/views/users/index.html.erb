@@ -1,0 +1,27 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'Добавить', :new_user %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+
+<%= h1andcontent "Список пользователей (#{@users.count})" %>
+
+
+<table>
+  <% @users.each do |u| %>
+    <tr>
+      <td style='padding-left:6px;width:222px'>
+        <%= link_to(u.name, u, ( {style: 'font-weight:700'} if current_user?(u) ) ) %>
+      </td>
+      <td>
+        <%= check_box_tag :ad, 1, u.admin?, disabled: true %>
+      <td style='width:133px;padding-left:6px'>
+        <%= link_to( 'Удалить', u, method: :delete, data: {confirm: 'Sure ?'} ) if admin? %> 
+        <% if current_user?(u) %>
+          | <%= link_to 'Изменить', edit_user_path(u) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tr>
+</table>

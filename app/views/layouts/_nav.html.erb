@@ -1,0 +1,17 @@
+<nav class="main-nav">
+  <nav class="left-nav link-effect">
+    <%= link_to t("nav.home"), root_path, ({class: :active} if params[:action].include? 'home') %>
+    <%= link_to t('nav.concert'), concert_c_path, ({class: :active} if params[:controller].include? 'concert') %>
+    <%= link_to t('nav.news'), news_path, ({class: :active} if params[:controller].include? 'news') %>
+    <%= link_to t('nav.members'), member_c_path, ({class: :active} if params[:controller].include? 'member') %>
+  </nav>
+  <div class="logo-concert">
+    <a href="#"></a>
+    <img src="/assets/main-logo.png" alt="">
+  </div>
+  <nav class="right-nav link-effect">
+    <%= link_to t('nav.help'), help_path, ({class: :active} if params[:action].include? 'help') %>
+    <%= link_to t('nav.gallery'), albom_c_path, ({class: :active} if params[:controller].include? 'albom') %>
+    <%= link_to t('nav.contact'), contacts_path, ({class: :active} if params[:controller].include? 'contact') %>
+  </nav>
+</nav>

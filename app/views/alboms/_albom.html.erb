@@ -1,0 +1,12 @@
+
+<%= raw '<div class="row">' if albom_counter % 3 == 0 %>
+  <div class="t-box-3 album-thumb">
+    <%= link_to [albom.concert, albom] do %>
+      <%= image_tag albom.fototitle.url %>
+      <span class="album-mask">
+        <h6><span></span><%= albom.title %></h6>
+        <p><%= albom.tumba %></p>
+      </span>
+    <% end %>
+  </div>
+<%= raw '</div>' if albom_counter % 3 == 2 %>

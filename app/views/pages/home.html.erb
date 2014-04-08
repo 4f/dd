@@ -1,0 +1,54 @@
+<% provide(:title, t('global.title')) %>
+
+<div class="main-content">
+  <div class="container">
+    <div class="top-info-content">
+      <div class="inner-space">
+        <%= content_tag :h2, @home.title %>
+        <p>
+          <%= raw @home.preText %>
+        </p>
+      </div>
+    </div>
+    <div class="triangle-black-down"></div>
+    <div class="concert-main-info">
+      <div class="main-concert-content">
+        <div class="inner-space">
+          <h1><%= t 'home.pastconcerts' %></h1>
+          <div class="nav-concert-year">
+            <ul>
+              <%= render partial: 'template/top_paginator', locals: {in_path: :ura_path} %>
+            </ul>
+          </div>
+
+          <p><%= raw @concert.home_pre %></p>
+
+          <%= render 'template/carousels', number: '1' %>
+
+          <p><%= raw @concert.home_after %></p>
+        </div>
+      </div>
+
+      <div class="cs-caro">
+        <div class="triangle-gray-down"></div>
+        <h4><%= t 'home.partnersofconcert' %><%= @concert.year %></h4>
+
+        <%= render 'partners' %>
+        
+        <div class="triangle-gray-up"></div>
+      </div>
+
+      <%= link_to "#{t 'home.aboutconcert'} #{@concert.year}", @concert, class: "btn-gray" %>
+    </div>
+    <div class="slice-block"></div>
+    <div class="promo-block">
+      <div class="inner-space">
+        <%= content_tag :h1, @home.title2 %>
+        <p>
+          <%= raw @home.postText %>
+        </p>
+        <%= link_to t('home.detail'), concert_path(@home.year_id), class: "btn-red" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@video.concert) %>
+  | <%= link_to 'Просмотр', [@video.concert, @video] %>
+  | <%= link_to 'К списку', concert_videos_path(@video.concert) %>
+  | <%= link_to 'Новая', new_concert_video_path(@video.concert,@video), data: {confirm: 'Несохраненные данные будут утеряны, Да ?'} %>
+  | <%= link_to 'Удалить', concert_video_path(@video.concert, @video), method: :delete, data: { confirm: 'Вы уверены что хотите удалить данную ссылку ?' } %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  |
+<% end %>
+
+<%= h1andcontent "Редактирование видео #{@video.title}, #{@video.concert.year}" %>
+
+<%= render 'form' %>

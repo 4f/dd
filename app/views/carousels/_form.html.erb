@@ -1,0 +1,100 @@
+
+<%= link_to concert_alboms_path(@concert) do %> 
+  <span class='header'>Альбомы</span>
+<% end %>
+
+<%= form_for concert_carousels_path(@concert) do |f| %>  
+  <%= hidden_field :carousel, :number, value: params[:number]  %>
+  <div>
+    <% @alboms.each do |a| %>
+      <br/>
+      <%= link_to edit_concert_albom_path(@concert, a) do %> 
+        <%= a.title %>
+      <% end %>
+
+      <br/>
+      <%= render partial: 'fotos', locals: {albom: a} %>
+    <% end %>
+  </div>
+  <br/>
+
+  <%= link_to concert_videos_path(@concert) do %> 
+    <span class='header'>Видео</span>
+  <% end %>
+  <%= render 'video' %>
+
+  <br/>
+
+  <div class="actions">
+    <%= submit_tag 'Установить' %>
+  </div>
+
+<% end %>
+
+
+
+
+
+<script>
+  $('.fotospan').click(function(){
+    $(this).find('input')[0].checked = $(this).find('input')[0].checked - 1
+    $(this).toggleClass('hru');
+  });
+</script>
+<style>
+.header{
+  font-size: 22px;
+  padding-left: 16px;
+}
+.fotos{
+  width: 70%;
+}
+.foto{
+  float: left;
+}
+.foto:hover{
+  background: blue;
+}
+
+.foto img {
+  display: inline;
+  vertical-align: middle;
+}
+#in_carousel{
+  background: #7b7;
+}
+.fotospan:hover{
+  border: 1px blue solid;
+  /*background: blue;*/
+}
+.fotospan:hover img{
+  border: 2px solid white;
+}
+.hru:hover{
+  background: yellow;
+}
+#in_carousel.hru{
+  background: red;
+}
+.hru{
+  background: #f57;
+}
+input[name=DeleteImage]{
+  background: red;
+  font-weight: 700;
+  border-color: red;
+}
+input[name=DeleteImage]:hover{
+  border-color: #999;
+  background: #f33;
+}
+.fotospan{
+  height: 72px;
+  width: 72px;
+  border: 1px #eee solid;
+  display: table-cell;
+  text-align: center; 
+  vertical-align: middle;
+}
+
+</style>

@@ -1,0 +1,57 @@
+
+<% provide(:title, t("global.title") ) %>
+
+ <!-- Popup -->
+<%= render 'template/callback' %>
+
+<div class="contacts-content">
+  <div class="container">
+    <%= render 'template/title', title: t('contact.contacts') %>
+    <div class="p-contacts">
+      <%= render 'map' %>
+      <div class="c-content">
+        <div class="triangle-gray-down"></div>
+        <div class="inner-space">
+          <div class="row">
+            <div class="m-box-4 address">
+              <h4><span></span><%= t 'contact.goback' %></h4>
+              <%= render 'textiki', c: @cnt[0], tag: 'p' %>
+            </div>
+            <div class="m-box-4 tel">
+              <h4><span></span><%= t 'contact.call' %></h4>
+              <ul>
+              <%= render 'textiki', c: @cnt[1], tag: 'li' %>
+              </ul>
+            </div>
+            <div class="m-box-4 e-mail">
+              <h4><span></span><%= t 'contact.send' %></h4>
+              <ul>
+                <%= render 'textiki', c: @cnt[2], tag: 'li' %>
+              </ul>
+            </div>
+            <div class="m-box-4 online">
+              <h4><span></span><%= t 'contact.write' %></h4>
+              <ul>
+                <%= render 'textiki', c: @cnt[3], tag: 'li' %>
+              </ul>
+            </div>
+          </div>
+          <h1><%= t 'contact.ourteam' %></h1>
+          <div class="heart-line">
+            <span><i></i></span>
+          </div>
+          <p class="about-team">
+            <%= raw @text %>
+          </p>
+          <div class="team-thumbs">
+            <%= render @teams %>
+          </div>
+        </div>
+        <div class="triangle-gray-up"></div>
+        <div class="feed-back">
+          <a href="#" class="btn-red btn-fb"><%= t 'contact.callback' %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+
+<% arr = ['', 'leading', 'guests', 'children'] %>
+
+<%= content_tag :div, class:"#{arr[role]}" do %>
+  <%= content_tag :h1, text %>
+  <%= content_tag :p, @members_page.text_lead %>
+
+  <%= content_tag :div, class:"wrap-#{arr[role]}-thumb" do %>
+    <%= raw "<div class='row'>" unless role == 1 %>
+      <% @members_page.concert.members.where("role = #{role}").each do |member| %>
+        <%= content_tag :div, class:"#{arr[role]}-thumb" do %>
+          <%= raw "<a href=#{member.link} target='_blank'>" unless member.link.blank? %>
+            <div class="img-block">
+              <img src=<%= member.foto.url %> alt="">
+              <%= raw "<div class='active-member'></div>" unless member.link.blank? %>
+            </div>
+            <%= content_tag :div, class:"#{arr[role]}-name" do %>
+              <h4><%= member.name %></h4>
+            <% end %>
+            <%= content_tag :div, class:"#{arr[role][0]}-location" do %>
+              <div class="country">
+                <%= tag :img, src:"#{member.flag.image.url}" %>
+                <%= member.flag.country %>
+              </div>
+              <div class="city"><span></span><%= member.city %></div>
+            <% end %>
+            <p><%= member.remark %></p>
+          <%= raw "</a>" unless member.link.blank? %>
+        <% end %>
+      <% end %>
+    <% raw "</div>" unless role == 1 %>
+  <% end %>
+<% end %>

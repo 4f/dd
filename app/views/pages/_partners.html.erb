@@ -1,0 +1,15 @@
+<div class="wrap-caro-sponsors">
+
+  <ul class="caro-sponsors">
+    <% @partners.each do |p| %>
+      <%= content_tag :li, ({class: 'spons-txt'} unless p.logo.exists?) do %>
+        <%= link_to p.link, target: :_blank do %>
+          <%= p.logo.exists? ? image_tag(p.logo.url) : p.text %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <a class="prev-sponsors-main" href="#"></a>
+  <a class="next-sponsors-main" href="#"></a>
+</div>

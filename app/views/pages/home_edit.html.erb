@@ -1,0 +1,60 @@
+
+<% content_for :lnks2 do %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to_function 'Сбросить', "$('input[name=cancel]').first().click()" %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+<%= h1andcontent "Редактирование домашней страницы" %>
+
+<%= render partial: 'template/error', object: @home %>
+
+
+<%= form_for @home, url: '/home_update' do |f| %>
+  <div class="field">
+    <%= f.label :year_id, 'Предстоящий концерт' %>
+    <%= f.collection_select :year_id, Concert.all, :id, :year %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :date, 'Дата', style: 'width:100px;display:inline-block' %>
+    <div style="display:inline-block;position:relative;left:3px;">
+      <%= f.date_select :date, order: [:day,:month,:year], use_two_digit_numbers: true %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :announcement, 'или Текст', style: 'width:100px;display:inline-block' %>
+    <%= f.text_field :announcement, placeholder: :announcement, style: 'display:inline-block;position:relative;left:5px;width:129px' %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :title, 'Заглавие', style: 'width:100px;display:inline-block' %>
+    <%= f.text_field :title, placeholder: 'title', style: 'display:inline-block;position:relative;left:5px;width:520px' %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :preText, 'Tекст' %><br/>
+    <%= f.text_area :preText, rows_by_cols_and_content(@home.preText, 80).merge( id: :ce_1, placeholder: 'first_text' ) %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :title2, 'Послеглавие', style: 'width:100px;display:inline-block' %>
+    <%= f.text_field :title2, style: 'display:inline-block;position:relative;left:5px;width:520px', placeholder: 'second title' %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :postText, 'Концовка' %><br/>
+    <%= f.text_area :postText, rows_by_cols_and_content(@home.postText, 80).merge( id: :ce_2, placeholder: 'second_text' ) %>
+  </div>
+  <br/>
+
+  <div class="actions">
+    <%= f.submit 'Сохранить изменения' %>
+    <%= f.submit "Отмена", name: 'cancel' %>
+  </div>
+<% end %>
+
+<script>
+  CKEDITOR.replace( 'ce_1' );
+  CKEDITOR.replace( 'ce_2' );
+</script>

@@ -1,0 +1,10 @@
+<% content_for :lnks2 do %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to_function 'Отменить', "$('input[name=cancel]').first().click()" %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+
+<%= h1andcontent "Новый концерт" %>
+
+<%= render 'form' %>

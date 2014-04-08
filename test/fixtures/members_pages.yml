@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  concert_id: 1
+  text_lead: MyText
+  text_guest: MyText
+  text_member: MyText
+
+two:
+  concert_id: 1
+  text_lead: MyText
+  text_guest: MyText
+  text_member: MyText

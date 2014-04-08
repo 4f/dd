@@ -1,0 +1,3 @@
+module News::FeedsHelper
+  
+end

@@ -1,0 +1,26 @@
+<%= form_for([@video.concert, @video]) do |f| %>
+
+  <%= render partial: 'template/error', object: @video %>
+
+  <div class="field">
+    <%= f.label :link, 'Ссылка' %><br />
+    <%= f.text_field :link, value: remove_http(@video.link), size: 49, required: true, placeholder: 'link' %>
+  </div>  
+  <div class="field">
+    <%= f.label :title, 'Название' %><br />
+    <%= f.text_field :title, size: 49, required: true, placeholder: 'title' %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :foto, 'Обложка' %>
+    <%= f.file_field :foto %>
+  </div>
+
+  <%= image_tag @video.foto.url if @video.foto.exists? %>
+
+  <br/><br/>
+    
+  <div class="actions">
+    <%= f.submit "Обновить информацию" %>
+  </div>
+<% end %>

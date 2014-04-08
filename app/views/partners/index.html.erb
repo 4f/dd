@@ -1,0 +1,37 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@concert) %>
+  | <%= link_to 'Новый', new_concert_partner_path(@concert) %>
+  | <%= link_to_function 'Назначить на главную', "$('input[name=global]').first().click()" %>
+  | <%= link_to_function 'Выбрать все', "$('input[type=checkbox]').prop('checked', true)" %>
+  | <%= link_to_function 'Снять все', "$('input[type=checkbox]').prop('checked', false)" %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+<%= h1andcontent "Список партнеров, #{@concert.year}" %>
+
+<%= form_tag global_concert_partners_path(@concert, 0) do %>
+  <table>
+
+    <% @partners.each do |partner| %>
+      <tr align='center' height='34'>
+        <%= raw partner.logo.exists? ? "<td style='background: black'>" : "<td>" %>
+          <%= image_tag partner.logo.url(:sm), style: "display:block; vertical-align:middle; margin:auto" if partner.logo.exists? %>
+        </td>
+        <td align='left' style='padding-left: 13px'>
+          <b><%= partner.name %></b>
+          <br>
+          <%= link_to_unless partner.link.blank?, remove_http(partner.link), partner.link, target: '_blank' %>
+        </td>
+        <td>
+          <%= check_box 'partners', partner.id, checked: partner.global %>
+        </td>
+        <td>
+          <%= link_to 'Просмотр', concert_partner_path(@concert, partner) %>
+          | <%= link_to 'Изменить', edit_concert_partner_path(@concert, partner) %>
+          | <%= link_to 'Удалить', concert_partner_path(@concert, partner), method: :delete, data: { confirm: 'Вы уверены что хотите удалить этого партнера ?' } %>
+        </td>
+      </tr>
+  <% end %>
+  </table>
+  <%= submit_tag '', name: :global, hidden: true %>
+<% end %>

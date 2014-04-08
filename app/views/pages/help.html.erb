@@ -1,0 +1,36 @@
+
+<%= render 'template/callback' %>
+
+<div class="donate-content">
+  <div class="container">
+    <div class="top-info-content">
+      <div class="inner-space">
+        <h1><%= t 'help.title' %></h1>
+      </div>
+      <div class="triangle-gray-up"></div>
+    </div>
+    <div class="p-donate">
+      <div class="triangle-gray-down"></div>
+      <div class="inner-space">
+        <h1><%= @help_page.title %></h1>
+        <div class="heart-line">
+          <span><i></i></span>
+        </div>
+        <p class="our-task"><%= @help_page.text %></p>
+        <h4><%= t 'help.reqs' %></h4>
+        <div class="donate-line">
+          <span><i></i></span>
+        </div>
+        <ul class="donate-info">
+          <% @help_page.req.each_line do |l| %>
+            <li><%= l %></li>
+          <% end %> 
+        </ul>
+      </div>
+      <div class="slice-block"></div>
+      <div class="feed-back">
+        <a href="#" class="btn-red btn-fb"><%= t 'help.callback' %></a>
+      </div>
+    </div>
+  </div>
+</div>

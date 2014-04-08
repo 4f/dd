@@ -1,0 +1,17 @@
+<div class="wrap-paginatior">
+        <div class="inner-space">
+          <div class="navigation">
+            <ul>
+              <li class="prev">
+                <%= link_to "", concert_albom_path(@albom.concert, @albom.prev) %>
+              </li>
+              <li class="back">
+                <%= link_to "", gallery_concert_alboms_path(@albom.concert) %>
+              </li>
+              <li class="next">
+                <%= link_to "", concert_albom_path(@albom.concert, @albom.next) %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>

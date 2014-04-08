@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  concert: 
+  number: 1
+  image: 
+
+two:
+  concert: 
+  number: 1
+  image: 

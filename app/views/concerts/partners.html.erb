@@ -1,0 +1,29 @@
+<% content_for :lnks2 do %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+<%= h1andcontent 'Партнеры концертов' %>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @concerts.each do |concert| %>
+    <tr>
+      <td>
+        <b><%= concert.year %></b>
+      </td>
+      <td>
+        <%= concert.title %>
+      </td>
+      <td>
+        <%= link_to "Партнеры (#{sprintf('%.2d', concert.partners.size)})", concert_partners_path(concert) %> |
+        <%= link_to 'Добавить', new_concert_partner_path(concert) %>
+
+      </td>
+    </tr>
+  <% end %>
+</table>

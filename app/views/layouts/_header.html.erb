@@ -1,0 +1,68 @@
+<% if params[:action].include?('home') %>
+  <header id="scene" class="header-main">
+    <div class="parallax-main">
+      <img class="layer" data-depth="0.15" src="/assets/bg-header-v2.jpg" alt="">
+    </div>
+<% else %>
+  <header id="scene" class="header-main bg-inner">
+<% end %>
+
+  <div class="container">
+    <div class="top-header">
+      <div class="row">
+        <div class="m-box-4">
+          <div class="gen-logo">
+            <img src="/assets/header-logo-pchelka-v2.png" alt="">
+          </div>
+        </div>
+        <div class="m-box-2">
+          <div class="lang-select">
+            <ul>
+              <li><%= link_to '', {locale: :ru}, class: 'ru', accesskey: '1' %></li>
+              <li><%= link_to '', {locale: :en}, class: 'eng', accesskey: '2' %></li>
+              <%= link_to '', @url_to_edit, hidden: true, accesskey: '0' %>
+            </ul>
+          </div>
+        </div>
+        <div class="m-box-4">
+          <div class="btn-volunteers">
+            <a href="#"><%= t "header.volunteers" %></a>
+            <img src="/assets/btn-right-volunteers.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if params[:action].include?('home') %>
+      <div class="bottom-header">
+        <div class="row">
+          <div class="m-box-4">
+            <div class="btn-soon-concert">
+              <span><%= t 'header.soondate' %></span>
+              <span>
+                <%= link_to @home.date_or_text, concert_path(@home.year_id) %>
+              </span>
+            </div>
+          </div>
+          <div class="m-box-2">
+            <div class="center-header-text">
+              <img src="/assets/dd-main-text.png" alt="">
+              <p><%= t 'header.festivalname' %></p>
+            </div>
+          </div>
+          <div class="m-box-4">
+            <div class="btn-donate">
+              <span><%= t 'header.helptitle' %></span>
+              <span>
+                <%= link_to t('header.help'), :help %>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <%= render 'layouts/nav' %>
+
+  </div>
+</header>

@@ -1,0 +1,9 @@
+<% debugger %>
+<%= raw '<div class="row">' if video_counter % 3 == 0 %>
+  <div class="t-box-3 album-thumb">
+    <%= link_to video.link, rel: :youtube, class: 'swipebox-video hover-video' do %>
+      <%= image_tag video.foto.url %>
+      <span class="video-mask"></span>
+    <% end %>
+  </div>
+<%= raw '</div>' if video_counter % 3 == 2 %>

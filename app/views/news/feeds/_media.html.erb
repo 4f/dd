@@ -1,0 +1,22 @@
+
+<div class="media-blocks">
+  <% unless @albom.blank? %>
+    <div class="media-block">
+      <%= link_to concert_albom_path(@albom.concert, @albom) do %>
+        <%= image_tag @albom.url() %>
+        <span class="album-mask">
+          <%= content_tag :h6, @albom.title %>
+          <%= content_tag :p, @albom.tumba %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+  <% unless @video.blank? %>
+    <div class="media-block media-news">
+      <%= link_to @video.link, class: "swipebox-vide hover-video", rel: :youtube do %>
+        <%= image_tag @video.url() %>
+        <span class="video-mask"></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  concert: 
+  title: MyString
+  text: MyText
+  tumba: MyText
+
+two:
+  concert: 
+  title: MyString
+  text: MyText
+  tumba: MyText

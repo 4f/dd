@@ -1,0 +1,27 @@
+#encoding: UTF-8
+<%= h1andcontent "Редактирование страницы поддержки" %>
+
+<p><%= notice %></p>
+<%= render partial: 'template/error', object: @help_page %>
+
+
+<%= form_for @help_page, url: '/update_help' do |f| %>
+  
+  <div class="field">
+    <%= f.label :title, 'Заглави</u>е</u><br/>'.html_safe, accesskey: 'T' %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :text, 'О<u>с</u>новной текст<br/>'.html_safe, accesskey: 'C' %>
+    <%= f.text_area :text, rows: 8, cols: 77 %>
+  </div>
+  <div class="field">
+    <%= f.label :req, 'Ре<u>к</u>визиты<br/>'.html_safe, accesskey: 'R' %>
+    <%= f.text_area :req, rows: 15, cols: 44 %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Сохранить изменения', accesskey: 'А' %>
+  </div>
+<% end %>
+
+<%= link_to 'Списо<u>к</u> концертов'.html_safe, concerts_path, accesskey: 'R' %>

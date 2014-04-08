@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="discription" content="">
+  <meta name="keywords" content="">
+  <link rel="SHORTCUT ICON" type="image/x-icon" href="/favicon.ico">
+  <title><%= yield(:title) %></title>
+  <%= stylesheet_link_tag "dd" %>
+  <%= javascript_include_tag "dd" %>
+  <%= csrf_meta_tag %>
+
+  <!--[if lte IE 8]><script src="/js/old-browser.js" charset="utf-8"></script><![endif]-->
+</head>
+<body>
+   <!-- Popup -->
+  <%= render 'template/volunteer' %>  
+  
+  <%= render 'layouts/header' %>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
+
+</body>
+
+</html>

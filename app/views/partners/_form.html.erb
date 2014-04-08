@@ -1,0 +1,41 @@
+<style>
+input[type=text]{
+  width: 400px;
+}
+input[type=checkbox]{
+  margin-top: 6px;
+  padding-top: 11px;
+}
+</style>
+
+<%= form_for([@concert, @partner], html: {multipart: true}) do |f| %>
+  <%= render partial: 'template/error', object: @partner %>
+
+  <div class="field">
+    <%= f.label :name, 'Название' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :link, 'Ссылка' %><br />
+    <%= f.text_field :link, value: remove_http(@partner.link) %>
+  </div>
+  <div class="field">
+    <%= f.label :text, 'Текстовая часть' %><br />
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :global, 'Показывать для домашней страницы' %>
+    <%= f.check_box :global %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :logo, 'Логотип' %>
+    <%= f.file_field :logo, accept: 'image/*' %>
+    <%= image_tag( @partner.logo.url(:sm) ) if @partner.logo.exists? %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit 'Сохранить' %>
+    <%= f.submit "Отмена", name: 'cancel' %>
+  </div>
+<% end %>

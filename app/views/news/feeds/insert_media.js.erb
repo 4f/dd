@@ -1,0 +1,8 @@
+  var editor = CKEDITOR.instances.ce_2;
+  if ( editor.mode == 'wysiwyg' ) {
+    editor.insertHtml( '<%= j(render(partial: "media")) %>', "unfiltered_html" ); }
+  else
+    alert( 'Вы должны быть в WYSIWYG режиме!' );
+
+
+  

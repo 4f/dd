@@ -1,0 +1,18 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@video.concert) %>
+  | <%= link_to 'К списку', concert_videos_path(@video.concert) %>
+  | <%= link_to 'Новая', new_concert_video_path(@video.concert) %>
+  | <%= link_to 'Удалить', concert_video_path(@video.concert, @video), method: :delete, data: { confirm: 'Вы уверены что хотите удалить данную ссылку ?' } %>
+  |
+<% end %>
+<%= h1andcontent "Ссылка видео #{@video.title}, #{@video.concert.year}" %>
+<div class='box'>
+  <p>
+    <b><%= @video.title %></b>
+  <p>
+    <%= link_to_unless @video.link.blank?, remove_http(@video.link), @video.link %>
+  </p>
+  <p>
+    <%= image_tag @video.foto.url if @video.foto.exists? %>
+  </p>
+</div>

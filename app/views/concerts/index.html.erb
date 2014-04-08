@@ -1,0 +1,34 @@
+
+<% content_for :lnks2 do %>
+  | <%= link_to 'Добавить', :new_concert %>
+  | <%= link_to 'Партнеры', :concerts_partners %>
+  | <%= link_to 'Домашняя страница', :home_edit %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+
+<%= h1andcontent "Список концертов (#{@concerts.count})" %>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @concerts.each do |concert| %>
+  <tr>
+    <td>
+      <b><%= concert.year %></b>
+    </td>
+    <td>
+      <%= concert.title %>
+    </td>
+    <td>
+      <%= link_to 'Просмотр', concert %> |
+      <%= link_to 'Изменить', edit_concert_path(concert) %> |
+      <%= link_to 'Удалить', concert, method: :delete, data: { confirm: 'Будет удален данный концерт и все сопутствующие ему данные, продолжаем ?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>

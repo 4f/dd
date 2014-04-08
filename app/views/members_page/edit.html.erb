@@ -1,0 +1,30 @@
+
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@members_page.concert) %>
+  | <%= link_to 'Участники', :concert_members %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to '0', concert_members_page_path %>
+  |
+<% end %>
+<%= h1andcontent "Страница участников, #{@members_page.concert.year}" %>
+
+<%= render partial: 'template/error', object: @members_page %>
+
+<%= form_for [@members_page.concert, @members_page] do |f| %>
+  
+  <div class="field">
+    <%= f.label :text_lead, 'Текст предшествующий ведущим' %><br/>
+    <%= f.text_area :text_lead, rows_by_cols_and_content( @members_page.text_lead, 77 ) %>
+  </div>
+  <div class="field">
+    <%= f.label :text_guest, 'Текст предшествующий гостям' %><br/>
+    <%= f.text_area :text_guest, rows_by_cols_and_content( @members_page.text_guest, 77 ) %>
+  </div>
+  <div class="field">
+    <%= f.label :text_member, 'Текст предшествующий выступающим' %><br/>
+    <%= f.text_area :text_member, rows_by_cols_and_content( @members_page.text_member, 77 ) %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Сохранить' %>
+  </div>
+<% end %>

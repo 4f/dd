@@ -1,0 +1,32 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'Флаги', :flags %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+<%= h1andcontent 'Участники концертов' %>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @concerts.each do |concert| %>
+    <tr>
+      <td>
+        <b><%= concert.year %></b>
+      </td>
+      <td>
+        <%= concert.title %>
+      </td>
+      <td width='335px'>
+        <%= link_to "Просмотр", concert_members_page_path(concert, concert.members_page) %> |
+        <%= link_to "Текст странички", edit_concert_members_page_path(concert, concert.members_page) %> |
+        <%= link_to "Участники (#{sprintf('%.2d', concert.members.size)})", concert_members_path(concert) %> |
+        <%= link_to 'Добавить', new_concert_member_path(concert) %>
+
+      </td>
+    </tr>
+  <% end %>
+</table>

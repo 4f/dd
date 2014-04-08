@@ -1,0 +1,51 @@
+<% provide(:title, t('global.title')) %>
+
+<div class="gallery-content">
+  <div class="container">
+    <div class="top-info-content">
+      <div class="inner-space">
+        <h1><%= t 'gallery.title' %></h1>
+      </div>
+      <div class="triangle-gray-up"></div>
+    </div>
+    <div class="p-gallery">
+
+      <div class="inner-space">
+
+        <div class="nav-gallery-year">
+          <ul>
+            <%= render partial: 'template/top_paginator', locals: {in_path: :gallery_concert_alboms_path} %>
+          </ul>
+        </div>
+
+        <% unless @alboms.empty? %>
+          <h1><%= t 'gallery.fotoalbom' %></h1>
+          <div class="album-thumbs">
+            <div class="album-thumbs">
+              <%= render @alboms %>
+              <%= raw '</div>' if @alboms.count % 3 != 2 %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+
+      <div class="video-thumbs">
+        <div class="triangle-gray-down"></div>
+        
+        <% unless @videos.empty? %>
+          <h1><%= t 'gallery.video' %></h1>
+          <div class="inner-space">
+            <%= render @videos %>
+            <%= raw '</div>' if @videos.count % 3 != 2 %>
+          </div>
+        <% end %>
+        
+        <div class="triangle-gray-up"></div>
+      </div>
+
+      <%= render '/template/bottom_paginator', in_next: gallery_concert_alboms_path(@concert.next), in_prev: gallery_concert_alboms_path(@concert.prev) %>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<%= content_tag :li, class: :prev do %>
+  <%= link_to '', concert_path(@concert, center: @center.prev.id), remote: true %>
+<% end %>
+
+<%= content_tag :li, class: :year do %>
+  <%= link_to @center.prev.year, *(@center.prev==@concert ? ["#", class: :active] : @center.prev) %>
+<% end %>
+
+<%= content_tag :li, class: :year do %>
+  <%= link_to @center.year, *(@center==@concert ? ["#", class: :active] : @center) %>
+<% end %>
+
+<%= content_tag :li, class: :year do %>
+  <%= link_to @center.next.year, *(@center.next==@concert ? ["#", class: :active] : @center.next) %>
+<% end %>
+
+<%= content_tag :li, class: :next do %>
+  <%= link_to '', concert_path(@concert, center: @center.next.id), remote: true %>
+<% end %>

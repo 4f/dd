@@ -1,0 +1,72 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  global:
+    title: 'Dari Dobro! - festival charity'
+  concert:
+    partners: "Concert's partners"
+    title: 'Concerts'
+  header:
+    volunteers: 'volunteers'
+    soondate: 'Concert will be'
+    festivalname: 'festival Charity'
+    helptitle: 'Support Project'
+    help: 'Help'
+  nav:
+    home: 'Home'
+    concert: 'Concert'
+    news: 'News'
+    members: 'Members'
+    help: 'Support Project'
+    gallery: 'Gallery'
+    contact: 'Contact Us'
+  footer:
+    copyrightfirst: 'Found of Charity '
+    copyrightname: '«Pchelka»'
+    designed: 'Designed by '
+  home:
+    pastconcerts: 'Past concerts'
+    partnersofconcert: 'Concerts partners '
+    aboutconcert: 'About concert'
+    detail: 'More'
+  browserdetect:
+    text: "It's a pitty."
+  help:
+    title: 'Support Project'
+    reqs: 'details'
+    callback: 'feedback'
+  news:
+    rubric: 'Rubric'
+    tags: 'Tags'
+    author: 'Author'
+    news: 'News'
+    detail: 'More'
+  members:
+    title: 'Members'
+    leading: "Concert's leading"
+    guest: "Concerts' guest"
+    children: 'For you played'
+  gallery:
+    title: 'Gallery'
+    fotoalbom: 'Alboms'
+    video: 'Video'
+  contact:
+    contacts: 'Contacts'
+    goback: 'Come'
+    call: 'Call'
+    send: 'Send'
+    write: 'Write'
+    ourteam: 'Our team'
+    callback: 'Feedback'
+  volback:
+    title_vol: "Volunteer's form"
+    title_back: "Feedback"
+    fio: "Name"
+    age: "Age"
+    tel: "Phone"
+    email: "Email"
+    text: "Your text"
+    send: "Send"
+
+

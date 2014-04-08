@@ -1,0 +1,12 @@
+          
+
+  Весточка обратной связи.
+
+  Дата:     <%= @mail.created_at.strftime("%d.%m.%y %H:%M:%S %Z")  %>
+  IP:       <%= @mail.ip %>
+  Имя:      <%= @mail.name %>
+  Телефон:  <%= @mail.phone %>
+  Почта:    <%= @mail.email %>
+  Текст:
+
+  <%= @mail.text %>

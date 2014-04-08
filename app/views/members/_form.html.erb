@@ -1,0 +1,50 @@
+<style>
+input[type=text]{
+  width: 446px;
+}
+label{
+  width: 66px;
+  padding: 8px;
+  display: inline-block;
+}
+</style>
+
+<%= form_for [@member.concert, @member], html: {multipart: true} do |f| %>
+
+  <%= render partial: 'template/error', object: @member %>
+
+  <div class="field">
+    <%= f.label :name, 'Имя' %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label 'Тип' %>
+    <%= f.select :role, [['Ведущий', 1], ['Гость', 2], ['Исполнитель', 3]], { selected: @member.role, include_blank: true } %>
+  </div>
+  <div class="field">
+    <%= f.label :link, "Ссылки" %>
+    <%= f.text_field :link, value: "#{remove_http(@member.link)}" %>
+  </div>
+  <div class="field">
+    <%= f.label :flag_id, 'Страна' %>
+    <%= f.collection_select :flag_id, Flag.all, :id, :country, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :city, "Город" %>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :remark, "Аннотация" %><br/>
+    <%= f.text_area :remark, rows_by_cols_and_content(@member.remark, 67) %>
+  </div>
+  <div class="field">
+    <%= f.label :foto, "Фото" %>
+    <%= f.file_field :foto %><br/>
+    <%= image_tag(@member.foto.url) if @member.foto.exists? %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit 'Сохранить' %>
+    <%= f.submit "Отменить", name: :cancel %>
+  </div>
+<% end %>

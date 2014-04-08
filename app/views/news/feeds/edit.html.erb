@@ -1,0 +1,14 @@
+
+<% content_for :lnks2 do %>
+  | <%= link_to 'К списку', :news_feeds %>
+  | <%= link_to 'Удалить', news_feed_path(@news), method: :delete, data: { confirm: 'Вы уверены в удалении ?'} %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to_function 'Отменить', "$('input[name=cancel]').first().click()" %>
+  | <%= link_to 'Создать', :new_news_feed %>
+  | <%= link_to '0', @news %>
+  |
+<% end %>
+
+<%= h1andcontent "Редактирование новости '#{@news.title}'" %>
+
+<%= render 'form' %>

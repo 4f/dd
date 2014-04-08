@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  concert: 
+  name: MyString
+  link: MyString
+  foto: 
+  contry: MyString
+  city: MyString
+  remark: MyString
+  role: 1
+
+two:
+  concert: 
+  name: MyString
+  link: MyString
+  foto: 
+  contry: MyString
+  city: MyString
+  remark: MyString
+  role: 1

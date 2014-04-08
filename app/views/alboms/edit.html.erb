@@ -1,0 +1,16 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path %>
+  | <%= link_to 'К списку', concert_alboms_path %>
+  | <%= link_to 'Новый', :new_concert_albom, data: {confirm: 'Несохраненные данные будут утеряны, Да ?'} %>
+  | <%= link_to 'Удалить', concert_albom_path(@albom.concert, @albom), method: :delete, data: { confirm: 'Вы уверены что хотите удалить данного участника ? Он хороший.' } %>
+  | <%= link_to_function 'Записать текст', "$('input[name=UploadText]').first().click()" %>
+  | <%= link_to_function 'Загрузить фото', "$('input[name=UploadImage]').first().click()" %>
+  | <%= link_to_function 'Выбрать обложку', "$('input[name=ChooseImage]').first().click()" %>
+  | <%= link_to_function 'Удалить фото', "$('input[name=DeleteImage]').first().click()" %>
+  | <%= link_to '0', concert_albom_path %>
+  |
+<% end %>
+
+<%= h1andcontent "Альбом #{@albom.title}, #{@albom.concert.year}" %>
+
+<%= render 'form' %>

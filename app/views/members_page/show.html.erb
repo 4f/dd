@@ -1,0 +1,32 @@
+<% provide(:title, t('global.title')) %>
+
+<div class="members-content">
+  <div class="container">
+    <div class="top-info-content">
+      <div class="inner-space">
+        <h1><%= t 'members.title' %></h1>
+      </div>
+    </div>
+    <div class="p-members">
+      
+      <div class="inner-space">
+        
+        <div class="nav-concert-year">
+          <ul>
+            <%= render partial: 'template/top_paginator', locals: {in_path: :page_concert_members_page_index_path} %>
+          </ul>
+        </div>
+
+        <%= render partial: 'div_members', locals: {role: 1, text: t('members.leading')} %>
+        <%= render partial: 'div_members', locals: {role: 2, text: t('members.guest')} %>
+        <%= render partial: 'div_members', locals: {role: 3, text: t('members.children')} %>
+      </div>
+
+      <div class="triangle-gray-up"></div>
+
+      <%= render 'template/bottom_paginator', in_next: concert_members_page_path(@concert.next, @concert.next.members_page), in_prev: concert_members_page_path(@concert.prev, @concert.prev.members_page) %>
+
+
+    </div>
+  </div>
+</div>

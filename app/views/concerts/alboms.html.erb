@@ -1,0 +1,32 @@
+<% content_for :lnks2 do %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+<%= h1andcontent 'Список концертов, альбомы/видео' %>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @concerts.each do |concert| %>
+  <tr style="border-bottom: 1px solid gray">
+    <td>
+      <b><%= concert.year %></b>
+    </td>
+    <td>
+      <%= concert.title %>
+    </td>
+    <td width='333px'>
+      <%= link_to "Просмотр", gallery_concert_alboms_path(concert) %> |
+      <%= link_to "Альбомы (#{concert.alboms.size})", concert_alboms_path(concert) %> |
+      <%= link_to '+альбом', new_concert_albom_path(concert) %> |
+      <%= link_to "Видео (#{concert.videos.size})", concert_videos_path(concert) %> |
+      <%= link_to '+видео', new_concert_video_path(concert) %>
+
+    </td>
+  </tr>
+<% end %>
+</table>

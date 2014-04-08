@@ -1,0 +1,11 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@video.concert) %>
+  | <%= link_to 'К списку', concert_videos_path(@video.concert) %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  |
+<% end %>
+
+<%= h1andcontent "Новая ссылка на видео, #{@video.concert.year}" %>
+
+<%= render 'form' %>
+

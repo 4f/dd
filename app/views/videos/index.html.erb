@@ -1,0 +1,35 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@concert) %>
+  | <%= link_to 'Просмотр', gallery_concert_alboms_path(@concert) %>
+  | <%= link_to 'Новая', new_concert_video_path %>
+  | <%= link_to 'Альбомы', concert_alboms_path(@concert) %>
+  |
+<% end %>
+
+<%= h1andcontent "Ссылки на видео (#{@videos.count}), #{@concert.year}" %>
+
+<table>
+  <tr>
+    <th width="80px"></th>
+    <th></th>
+    <th width="150px"></th>
+    <th></th>
+  </tr>
+
+<% @videos.each do |video| %>
+  <tr height='65px'>
+    <td><%= link_to (image_tag video.foto.url(:sm)), [video.concert, video], class: :link_image %></td>
+    <td>
+      <b><%= video.title %></b>
+    </td>
+    <td>
+      <%= link_to remove_http(video.link), video.link, target: "_blank" %>
+    </td>    
+    <td>
+      <%= link_to 'Просмотреть', [video.concert, video] %> |
+      <%= link_to 'Изменить', edit_concert_video_path(video.concert, video) %> |
+      <%= link_to 'Удалить', [video.concert, video], method: :delete, data: { confirm: 'Уверены ?' } %></td>
+    </tr>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,17 @@
+<div style='clear:both'></div>
+
+<div class='fotos'>
+  <% @concert.videos.each do |video| %>
+    <% flag = @concert.carousels.where(number: params[:number]).find_by_video_id(video.id) %>
+    <div class='foto'>
+      <span class='fotospan' <%= "id=in_carousel" if flag %> > 
+        <div>
+          <%= image_tag video.foto.url(:sm) %>
+          <%= check_box_tag (flag ? '[del][]' : '[new][][video_id]'), flag ? flag.id : video.id, false, hidden:true %>
+        </div>
+      </span>
+    </div>
+  <% end %>
+</div>
+
+<div style='clear: both'></div>

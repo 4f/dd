@@ -1,0 +1,28 @@
+<div class="concert-sponsors">
+  <%= content_tag :h1, "#{t('concert.partners')} #{@concert.year}" %>
+  
+  <div class="cs-thumbs">
+    <% @partners.where('logo_file_name != ?', '').each do |pl| %>
+      <div class="cs-thumb">
+        <%= link_to_unless pl.link.blank?, (image_tag pl.logo.url), pl.link, {target:"_blank"} do |name| %>
+          <%= name %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="cs-no-logo">
+    <div class="inner-space">
+      <ul>
+        <% @partners.where(logo_file_name: nil).each do |pl| %>
+          <li>
+            <%= link_to_unless pl.link.blank?, pl.text, pl.link, {target:"_blank"} do |name| %>
+              <%= name %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+</div>

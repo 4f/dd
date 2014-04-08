@@ -1,0 +1,55 @@
+#encoding: UTF-8
+
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path %>
+  | <%= link_to 'К списку', concert_partners_path %>
+  | <%= link_to 'Редактирование', edit_concert_partner_path(@concert, @partner) %>
+  | <%= link_to 'Удалить', concert_partner_path(@concert, @partner), method: :delete, data: { confirm: 'Вы уверены что хотите удалить этого партнера ?' } %>
+  | <%= link_to 'Новый', new_concert_partner_path(@concert) %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+<%= h1andcontent "Партнер #{@partner.name}, #{@concert.year}" %>
+
+<table>
+  <tr>
+    <td>
+      <b>Название:</b>
+    </td>
+    <td align='center'>
+      <%= @partner.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Ссылка:</b>
+    </td>
+    <td align='center'>
+      <%= remove_http @partner.link %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Текст:</b>
+    </td>
+    <td align='center'>
+      <%= @partner.text.blank? ? '-' : @partner.text %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Global:</b>
+    </td>
+    <td align='center'>
+      <%= tag :input, type: :checkbox, disabled: true, checked: @partner.global %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Логотип:</b>
+    </td>
+    <td alingn='center' style="background: black">
+      <%= @partner.logo.exists? ? image_tag(@partner.logo.url) : '-' %>
+    </td>
+  </tr>
+</table>

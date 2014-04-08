@@ -1,0 +1,40 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@member.concert) %>
+  | <%= link_to 'К списку', concert_members_path(@member.concert) %>
+  | <%= link_to 'Новый', :new_concert_member %>
+  | <%= link_to 'Изменить', edit_concert_member_path(@member) %>
+  | <%= link_to 'Удалить', concert_member_path(@member.concert, @member), method: :delete, data: { confirm: 'Вы уверены что хотите удалить данного участника ? Он хороший.' } %>
+  | <%= link_to 'Флаги', :flags %>
+  | <%= link_to '0', concert_members_page_path(@member.concert, @member.concert.members_page) %>
+  |
+<% end %>
+
+<%= h1andcontent "Участник #{@member.name}" %>
+
+<div>
+  <div style='display:inline-block'>
+    <%= image_tag @member.foto.url %>
+  </div>
+  <div style='display:inline-block;width:350px'>
+    <div style='padding-left:16px;font-family: arial;font-size:16px'>
+      <p>
+        <%= @member.name %>
+      </p>
+      <p>
+        <%= print_role @member.role %>
+      </p>
+      <p>
+        <%= link_to_unless @member.link.blank?, remove_http(@member.link), @member.link, target: :_blank %>
+      </p>
+      <p>
+        <%= image_tag(@member.flag.image.url) %>
+        <%= @member.flag.country %>,
+        <%= @member.city %>
+      </p>
+      <p>
+        <%= @member.remark %>
+      </p>
+      <br/>
+    </div>
+  </div>
+</div>

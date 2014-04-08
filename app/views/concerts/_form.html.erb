@@ -1,0 +1,67 @@
+<style>
+  input[type=text]{
+    width: 653px;
+  }
+  div.field{
+    margin-bottom: 6px;
+  }
+
+</style>
+
+<%= form_for @concert, multipart: true do |f| %>
+  <%= render partial: 'template/error', object: @concert %>
+
+  <div class="field">
+    <%= f.label :year, 'Год' %>
+    <%= f.collection_select :year, 1995..2049, :to_s, :to_s, {disabled: ( Concert.pluck(:year) - [@concert.year]), selected: (@concert.year || (Concert.first.year + 1 ))} %>
+  </div>
+  <div class="field">
+    <%= f.label :title, "Титульный текст" %><br />
+    <%= f.text_field :title, size:79 %>
+  </div>
+  <div class="field">
+    <%= f.label :home_pre, "Короткая преамбула для домстраницы" %><br />
+    <%= f.text_area :home_pre, {rows: 80, cols: 8, id: :ce_1} %>
+  </div>
+  <div class="field">
+    <%= f.label :home_after, "Короткая постамбула для домстраницы" %><br />
+    <%= f.text_area :home_after, rows_by_cols_and_content(@concert.home_after, 80).merge( id: :ce_2 ) %>
+  </div>
+  <div class="field">
+    <%= f.label :text1, "Вводный текст, если необходим" %><br />
+    <%= f.text_area :text1, rows_by_cols_and_content(@concert.text1, 80).merge( id: :ce_3 ) %>
+  </div>
+
+  <%= render 'carousel', number: 1 %>
+
+  <div class="field">
+    <%= f.label :text2, "Текст за первой возможной каруселью" %><br />
+    <%= f.text_area :text2, rows_by_cols_and_content(@concert.text2, 80).merge( id: :ce_4 ) %>
+  </div>
+  <div class="field">
+    <%= f.label :title2, "Заглавие перед второй каруселью" %><br />
+    <%= f.text_field :title2, size:79 %>
+  </div>
+
+  <%= render 'carousel', number: 2 %>
+
+  <div class="field">
+    <%= f.label :text3, "Заключительный текст, после второй возможной карусели" %><br />
+    <%= f.text_area :text3, rows_by_cols_and_content(@concert.text3, 80).merge( id: :ce_5 ) %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Обновить' %>
+    <%= submit_tag "Отмена", name: 'cancel' %>
+
+  </div>
+<% end %>
+
+
+<script>
+  CKEDITOR.replace( 'ce_1' );
+  CKEDITOR.replace( 'ce_2' );
+  CKEDITOR.replace( 'ce_3' );
+  CKEDITOR.replace( 'ce_4' );
+  CKEDITOR.replace( 'ce_5' );
+  
+</script>

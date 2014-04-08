@@ -1,0 +1,32 @@
+
+<% content_for :lnks2 do %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to_function 'Сбросить', "$('input[name=cancel]').first().click()" %>
+  | <%= link_to '0', :help %>
+  |
+<% end %>
+<%= h1andcontent "Редактирование страницы поддержки" %>
+
+<%= render partial: 'template/error', object: @help_page %>
+
+
+<%= form_for @help_page, url: '/help_update' do |f| %>
+  
+  <div class="field">
+    <%= f.label :title, 'Заглавие' %>
+    <%= f.text_field :title, style: "width:565px" %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :text, 'Tекст' %><br/>
+    <%= f.text_area :text, rows_by_cols_and_content(@help_page.text, 80) %>
+  </div>
+  <div class="field">
+    <%= f.label :req, 'Реквизиты' %><br/>
+    <%= f.text_area :req, rows: 15, cols: 44 %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Сохранить изменения' %>
+    <%= f.submit "Отмена", name: 'cancel' %>
+  </div>
+<% end %>

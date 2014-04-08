@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>  
+  <%= stylesheet_link_tag    "admin", :media => "all" %>
+  <%= javascript_include_tag "users" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<span class='first_links'>
+  <%= link_to 'Домой', :root %>
+  | <%= link_to 'H0ME', :root %>
+</span>
+<br/>
+<br/>
+<%= h1andcontent 'Вход' %>
+
+<div class="row">
+  <div>
+    <%= form_for(:user, url: signin_users_path, method: :post) do |f| %>
+    <%= render partial: 'template/error', object: @user %>
+
+    <div class="field">
+
+      <%= f.label :name, "Имя" %>
+      <%= f.text_field :name %>
+    </div>
+      <br/>
+      <div class="field">
+
+      <%= f.label :password, "Пароль" %>
+      <%= f.password_field :password %>
+    </div>
+      <br/>
+
+      <%= f.submit "Войти" %>
+    <% end %>
+
+  </div>
+</div>
+<br/>
+<%= link_to 'Домой', :root %>
+| <%= link_to 'Home', :root %>
+
+
+<style>
+label{
+  width: 111px;
+  display: inline-block;
+}
+</Style>
+</body>
+</html>

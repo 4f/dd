@@ -1,0 +1,19 @@
+<div class="fb-modal" style="display: none;">
+  <div class="close-popup"></div>
+  <h1>Обратная связь</h1>
+  <%= form_for :callback, url: :callback_mailics, remote:true, method: :post do |f| %>
+    <%= f.text_field :name, placeholder: "ФИО", size: nil %>
+    <%= f.text_field :phone, type: :tel, placeholder: "Телефон", size: nil %>
+    <%= f.text_field :email, type: 'e-mail', placeholder: "Email", size: nil %>
+    <%= f.text_area :text, placeholder: "Ваш текст сообщения", cols: nil, rows: nil %>
+    <%= f.hidden_field :tipo, value: '2' %>
+
+    <div class="bottom-modal">
+      <div class="captcha">
+        <%= show_simple_captcha input_html: {class: 'captcha-enter', required: nil}, placeholder: '' %>
+      </div>
+      <button onclick="$('.close-popup').click()" class="send-msg btn-red">Отправить</button>
+    </div>
+    <%= f.text_field :bt_flag, placeholder: 'isee', size: nil, style: 'display:none' %>
+  <% end %>
+</div>

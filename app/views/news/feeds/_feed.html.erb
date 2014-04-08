@@ -1,0 +1,60 @@
+<div class="inner-space">
+
+  <div class="news">
+    <div class="news-top">
+      <div class="m-box-6">
+        <%= link_to news_feed_path(feed) do %>
+          <h5><span><%= feed.title %></span></h5>
+        <% end %>
+      </div>
+      <div class="m-box-4">
+        <div class="news-activity">
+          <span class="date"><%= feed.date.strftime("%d/%m/%Y") %></span>
+        </div>
+      </div>
+    </div>
+    <div class="news-content">
+      <div class="row">
+        <div class="t-box-2">
+          <%= raw feed.preambula %>
+        </div>
+        <div class="t-box-2">
+          <div class="media-news">
+            <%= link_to news_feed_path(feed) do %>
+              <%= image_tag feed.foto.url %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="news-bottom">
+      <div class="row">
+        <div class="m-box-3">
+          <div class="news-info">
+            <div class="rubric"><%= t 'news.rubric' %>: 
+              <% feed.rubric.each do |rubric| %>
+                <%= tag_to_link rubric, 'r', 't', false %>
+              <% end %>
+            </div>
+            <div class="tags"><%= t 'news.tags' %>: 
+              <% feed.tags.each do |tag| %>
+                <%= tag_to_link tag, 't', 'r', false %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="m-box-3">
+          <div class="author"><%= t 'news.author' %>: 
+            <span><%= feed.author %></span>
+          </div>
+        </div>
+        <div class="m-box-3">
+          <%= link_to t("news.detail"), news_feed_path(feed), class: "btn-red" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="slice-block-gray"></div>

@@ -1,0 +1,74 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К списку', :mailics %>
+  | <%= link_to 'Удалить', @mail, method: :delete, data: { confirm: "Вы уверены что хотите удалить письмо от #{@mail.name}" } %>
+  |
+<% end %>
+
+<%= h1andcontent "Письмо" %>
+
+<table>
+  <tr>
+    <td>
+      Дата: 
+    </td>
+    <td>
+      <%= @mail.created_at.strftime("%d.%m.%y %H:%M:%S")  %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      IP: 
+    </td>
+    <td>
+      <%= @mail.ip %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Тип: 
+    </td>
+    <td>
+      <%= ['spam?', 'volunteer', 'callback'].fetch @mail.tipo, 'spam?' %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Имя: 
+    </td>
+    <td>
+      <%= @mail.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Возраст:
+    </td>
+    <td>
+      <%= @mail.age %>
+   </td>
+ </tr>
+ <tr>
+  <td>
+    Телефон:
+  </td>
+    <td>
+      <%= @mail.phone %>
+   </td>
+ </tr>
+ <tr>
+    <td>
+      Почта:
+    </td>
+    <td>
+      <%= @mail.email %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Текст:
+    </td>
+    <td width='444px'>
+      <%= @mail.text %>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,74 @@
+<% provide(:title, t('global.title')) %>
+
+<div class="news-inner-content">
+  <div class="container">
+
+    <div class="top-info-content">
+      <div class="inner-space">
+        <h2><%= @news.title %></h2>
+      </div>
+      <div class="triangle-gray-up"></div>
+    </div>
+
+    <div class="p-news-inner">
+      <div class="inner-space">
+        <div class="news">
+          <div class="news-content">
+
+            <div class="top-news-content">
+              <div class="row">
+                <div class="t-box-2">
+                  <%= raw @news.preambula %>
+                </div>
+                <div class="t-box-2">
+                  <div class="">
+                    <%= image_tag @news.foto.url %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <%= raw @news.text %>
+
+          </div>
+
+          <div class="news-bottom">
+            <div class="row">
+
+              <div class="m-box-3">
+                <div class="news-info">
+                  <div class="rubric"><%= t 'news.rubric' %>:
+                    <% @news.rubric.each do |rubric| %>
+                      <%= link_to rubric.name, news_path('r[]' => "#{rubric.id}") %>
+                    <% end %>
+                  </div>
+                  <div class="tags"><%= t 'news.tags' %>: 
+                    <% @news.tags.each do |tag| %>
+                      <%= link_to tag.name, news_path('t[]' => "#{tag.id}") %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+
+              <%= render 'show_paginator' %>
+
+              <div class="m-box-3">
+                <div class="m-box-6">
+                  <div class="author"><%= t 'news.author' %>: 
+                    <span><%= @news.author %></span>
+                  </div>
+                </div>
+                <div class="m-box-4">
+                  <span class="date">
+                    <%= @news.date.strftime('%d/%m/%Y') %>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

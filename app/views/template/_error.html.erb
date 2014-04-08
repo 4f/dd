@@ -1,0 +1,11 @@
+
+<% if error.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= "#{t=error.errors.count} ошибк#{ t<2 ? 'а' : 'и' }" %>:</h3>
+    <ul>
+	    <% error.errors.each do |_, msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+    </ul>
+  </div>
+<% end %>

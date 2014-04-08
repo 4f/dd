@@ -1,0 +1,46 @@
+<% provide(:title, t('global.title')) %>
+
+<div class="gallery-content">
+  <div class="container">
+    <div class="top-info-content">
+      <div class="inner-space">
+        <%= content_tag :h2, @albom.title %>
+      </div>
+      <div class="triangle-gray-up"></div>
+    </div>
+    <div class="p-gallery-inner">
+      <div class="gallery-description">
+        <div class="inner-space">
+          <p>
+            <%= @albom.text %>
+          </p>
+        </div>
+      </div>
+      <div class="gi-content">
+
+        <div class="triangle-gray-down"></div>
+        <div class="inner-space">
+
+          <div class="gi-thumbs">
+          
+            <% @albom.fotos.each do |f| %>
+              <div class="gi-thumb">
+                <%= link_to f.image.url, class: :swipebox do %>
+                  <%= image_tag f.image.url(:gallery) %>
+                  <span class="img-mask"></span>
+                <% end %>
+              </div>
+            <% end %>
+
+          </div>
+
+        </div>
+        
+        <div class="triangle-gray-up"></div>
+      </div>
+
+      <%= render 'paginator_bottom' %>
+
+    </div>
+  </div>
+</div>

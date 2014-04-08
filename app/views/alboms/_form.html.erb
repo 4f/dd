@@ -1,0 +1,30 @@
+<%= render partial: 'template/error', object: @albom %>
+<%= form_for [@albom.concert, @albom] do |f| %>  
+
+  <div>
+    <div style="display:inline-block;">
+      <div class="field">
+        <%= f.label :title, "Заглавие" %><br />
+        <%= f.text_field :title, size: 91 %>
+      </div>
+      <br/>
+      <div class="field">
+        <%= f.label :text, "Текст" %><br />
+        <%= f.text_area :text, rows_by_cols_and_content( @albom.text, 70) %>
+      </div>
+      <br/>
+      <div class="field">
+        <%= f.label :tumba, "Тумбочка" %><br />
+        <%= f.text_area :tumba, rows_by_cols_and_content( @albom.tumba, 70) %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Обновить текстовую информацию', name: "UploadText" %>
+      </div>
+    </div>
+    <div style="display:inline-block;margin-left:12px">
+      <%= image_tag(@albom.fototitle.url) if @albom.fototitle.exists? %>
+    </div>
+  </div>
+
+<% end %>
+<%= render('fotos') if @albom.persisted? %>

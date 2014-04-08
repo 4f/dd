@@ -1,0 +1,27 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@concert) %>
+  | <%= link_to 'Новый', new_concert_albom_path %>
+  | <%= link_to 'Видео', concert_videos_path(@concert) %>
+  | <%= link_to '0', gallery_concert_alboms_path(@concert) %>
+  |
+<% end %>
+<%= h1andcontent "Список альбомов (#{@alboms.count}), #{@concert.year}" %>
+
+
+<table>
+  <% @alboms.each do |albom| %>
+    <tr>
+      <td width='68px' height='68px' align='center'>
+        <%= image_tag albom.fototitle.url(:sm) %>
+      </td>
+      <td style="width:333px;padding-left:6px;font-size:16px">
+        <%= albom.title %>
+      </td>
+      <td>
+        <%= link_to 'Просмотр', [@concert, albom] %><br/>
+        <%= link_to "Изменить (#{albom.fotos.count})", edit_concert_albom_path(@concert, albom) %><br/>
+        <%= link_to 'Удалить', [@concert, albom], method: :delete, data: { confirm: 'Вы уверены в том, чтобы удалить данный альбом ?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

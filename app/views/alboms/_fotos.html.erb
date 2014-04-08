@@ -1,0 +1,88 @@
+
+<div class='bottom_line' style="margin-bottom:6px"></div>
+
+<%= form_for [@albom.concert, @albom], multipart: true do |f2| %>
+  <div class="field" style='float:left;width:250px'>
+    <%= f2.label 'fotos_attributes', 'Выбрать фоточки'%>
+    <%= f2.file_field 'fotos_attributes', accept: 'image/*', multiple: true %>
+  </div>
+  <div class="actions">
+    <%= f2.submit 'Загрузить на сервер', name: 'UploadImage', style: 'width: 155px' %>
+    <%= f2.submit 'Назначить обложку', name: 'ChooseImage', style: 'width: 155px' %>
+    <br/>
+    <%= f2.submit 'Удалить выбранное', name: 'DeleteImage', style: 'width: 155px' %>
+  </div>
+
+
+  <div style='clear:both'></div>
+
+  <div class='fotos'>
+    <% @albom.fotos.each do |foto| %>
+      <div class='foto' <%= "id=mainfoto" if foto.id == @albom.mainfoto %>>
+        <span class='fotospan'> 
+          <div>
+            <%= image_tag foto.image.url(:sm) %>
+            <%= check_box_tag 'albom[dels_attributes][]', foto.id, false, hidden:true %>
+          </div>
+        </span>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>
+
+<div style='clear: both'></div>
+
+<script>
+  $('input[name=UploadImage').click(function(){ $('#notice').text('...идет загрузка изображений'); });
+  $('input[name=ChooseImage').click(function(){ $('#notice').text('...подождите секундочку...'); });
+  $('.foto').click(function(){
+    $(this).find('input')[0].checked = $(this).find('input')[0].checked == 1 ? 0: 1 
+    $(this).toggleClass('hru');
+  });
+</script>
+<style>
+.foto{
+  float: left;
+}
+#mainfoto{
+  background: green;
+}
+input[name=DeleteImage]{
+  background: red;
+  font-weight: 700;
+  border-color: red;
+}
+input[name=DeleteImage]:hover{
+  border-color: #999;
+  background: #f33;
+}
+.fotospan{
+  height: 70px;
+  width: 70px;
+  border: 1px #eee solid;
+  display: table-cell;
+  text-align: center; 
+  vertical-align: middle;
+}
+.foto:hover{
+  background: blue;
+}
+.hru:hover{
+  background: yellow;
+}
+.fotospan:hover{
+  border: 1px blue solid;
+  /*background: blue;*/
+}
+.hru{
+  background: red;
+}
+.fotospan:hover img{
+  border: 2px solid white;
+}
+.foto img {
+  display: inline;
+  vertical-align: middle;
+}
+</style>

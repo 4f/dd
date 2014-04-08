@@ -1,0 +1,38 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К списку', :users %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+
+<%= h1andcontent "Новый пользователь" %>
+
+
+<div class="row">
+  <div>
+    <%= render partial: 'template/error', object: @user %>
+
+    <%= form_for(@user) do |f| %>
+  <div class="field">
+
+    <%= f.label :name, "Имя" %>
+    <%= f.text_field :name %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= label :admin, "Админ" %>
+    <%= f.check_box :admin %>
+  </div>
+    <br/>
+    <br/>
+
+    <%= f.submit "Создать" %>
+    <% end %>
+  </div>
+</div>
+<style>
+  label{
+    width: 66px;
+    display: inline-block;
+  }
+</style>

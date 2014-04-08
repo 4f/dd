@@ -1,0 +1,35 @@
+
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@concert) %>
+  | <%= link_to 'К списку', concert_alboms_path %>
+  | <%= link_to 'Новый', :new_concert_albom %>
+  | <%= link_to 'Изменить', :edit_concert_albom %>
+  | <%= link_to 'Удалить', concert_albom_path(@albom.concert, @albom), method: :delete, data: { confirm: 'Вы уверены что хотите удалить данного участника ? Он хороший.' } %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+
+<div style='font-family:arial;font-size:16px'>
+  <p>
+    <%= @albom.title %>
+  </p>
+  <div style="display:inline-block;margin-left:12px">
+    <%= image_tag(@albom.fototitle.url) if @albom.fototitle.exists? %>
+  </div>
+  <div style="width:333px;display:inline-block;">
+    <div>
+      <%= @albom.text %>
+    </div>
+  </div>
+
+  <p>
+    <%= @albom.tumba %>
+  </p>
+</div>
+
+
+
+<% @albom.fotos.each do |foto| %>
+  <%= image_tag foto.image.url(:sm) %>
+<% end %>
+

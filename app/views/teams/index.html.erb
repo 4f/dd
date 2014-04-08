@@ -1,0 +1,26 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'Добавить', :new_team %>
+  | <%= link_to '0', :contacts %>
+  |
+<% end %>
+<%= h1andcontent "Список участников в команде" %>
+
+<table>
+<% @teams.each do |team| %>
+  <tr style='height:34px'>
+    <td>
+      <%= image_tag team.foto.url(:sm), style: "display:block; vertical-align:middle; margin:auto" unless team.foto.blank?%>
+    </td>
+    <td style='width:355px'>
+      <b><%= team.name %></b>
+      <br/><small><%= team.remark %></small>
+    </td>
+    <td>
+      <%= link_to 'Просмотр', team %>
+      <br><%= link_to 'Изменение', edit_team_path(team) %>
+      <br><%= link_to 'Удаление', team, method: :delete, data: { confirm: "Вы уверены что #{team.name} заслуживает этого ?" } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+

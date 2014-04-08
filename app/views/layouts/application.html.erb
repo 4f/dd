@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>  
+  <title><%= content_for?(:title) ? yield(:title) : "DD" %></title>
+  <%= stylesheet_link_tag    "admin", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "ckeditor/ckeditor" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+  <% lnk = { 
+    'Концерты'  => :concerts, 
+    'Новости'   => :news_feeds, 
+    'Участники' => :concerts_members, 
+    'Поддержка' => :help_edit, 
+    'Альбомы'   => :concerts_alboms, 
+    'Контакты'  => :edit_contacts,
+  } %>
+
+
+  <span class='first_links'>
+    | <% lnk.each do |k, v| %>
+        <%= link_to k, v %> |
+      <% end %>
+  <%= link_to "RU1", {locale: :ru}, class: ( I18n.locale == :ru ? :langcheck : :lang ) %>
+  <%= link_to "EN2", {locale: :en}, class: ( I18n.locale == :en ? :langcheck : :lang ) %>
+
+  </span>
+  <% if current_user %>
+    <span id='link_adname'>
+      <%= link_to 'emails', :mailics %> |
+      <%= link_to 'words', :translation %> |
+      <%= link_to 'users', :users %> |
+      <%= link_to current_user.name, signout_users_path, title: 'logout' %>
+    </span>
+  <% end %>
+
+  
+  <br/>
+  <span class='second_links'>
+    <%= content_for?(:lnks2) ? yield(:lnks2) : "|" %>
+    <%= link_to 'Bk3', :back, class: :lang %> |
+  </span>
+
+  <div class='top_line'></div>
+
+  <%= yield %>
+
+  <div class='bottom_line'></div>
+  
+  <%= content_for?(:lnks2) ? yield(:lnks2) : "|" %>
+  <%= link_to 'Back', :back, class: :lang %> |
+
+  <br/>
+
+  | <% lnk.each do |k, v| %>
+      <%= link_to k, v %> |
+    <% end %>
+  <%= link_to "RU", {locale: :ru}, class: ( I18n.locale == :ru ? :langcheck : :lang ) %>
+  <%= link_to "EN", {locale: :en}, class: ( I18n.locale == :en ? :langcheck : :lang ) %>
+
+
+</body>
+</html>

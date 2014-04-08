@@ -1,0 +1,29 @@
+<header id="scene" class="header-main bg-inner">
+  <div class="container">
+    <div class="top-header">
+      <div class="row">
+        <div class="m-box-4">
+          <div class="gen-logo">
+            <img src="/img/header-logo-pchelka-v2.png" alt="">
+          </div>
+        </div>
+        <div class="m-box-2">
+          <div class="lang-select">
+            <ul>
+              <li><%= link_to '', {locale: :ru}, class: 'ru', accesskey: '1' %></li>
+              <li><%= link_to '', {locale: :en}, class: 'eng', accesskey: '2' %></li>
+            </ul>
+          </div>
+        </div>
+        <div class="m-box-4">
+          <div class="btn-volunteers">
+            <a href="#"><%= t 'header.volunteers' %></a>
+            <img src="/img/btn-right-volunteers.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render 'layouts/nav' %>
+
+  </div>
+</header>

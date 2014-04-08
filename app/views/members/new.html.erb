@@ -1,0 +1,13 @@
+<% content_for :lnks2 do %>
+  | <%= link_to 'К концерту', edit_concert_path(@member.concert) %>
+  | <%= link_to 'К списку', concert_members_path(@member.concert) %>
+  | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
+  | <%= link_to_function 'Отменить', "$('input[name=cancel]').first().click()" %>
+  | <%= link_to 'Флаги', :flags %>
+  | <%= link_to '0', :root %>
+  |
+<% end %>
+
+<%= h1andcontent 'Новый участник' %>
+
+<%= render 'form' %>

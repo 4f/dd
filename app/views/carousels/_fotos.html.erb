@@ -1,0 +1,19 @@
+
+
+<div style='clear:both'></div>
+
+<div class='fotos'>
+  <% albom.fotos.each do |foto| %>
+    <% flag = @concert.carousels.where(number: params[:number]).find_by_foto_id(foto.id) %>
+    <div class='foto'>
+      <span class='fotospan' <%= "id=in_carousel" if flag %> > 
+        <div>
+          <%= image_tag foto.image.url(:sm) %>
+          <%= check_box_tag (flag ? '[del][]' : '[new][][foto_id]'), flag ? flag.id : foto.id, false, hidden:true %>
+        </div>
+      </span>
+    </div>
+  <% end %>
+</div>
+
+<div style='clear: both'></div>

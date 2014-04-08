@@ -1,0 +1,16 @@
+<div class="wrap-photo-report">
+  <ul class="caro-photo-report">
+
+    <% @concert.crsl(number).each do |c| %>
+      <li class="caro-img">
+        <%= link_to c.url, {rel: c.video_or_foto('youtube'), class: c.video_or_foto('swipebox', 'swipebox-video')} do %>
+          <%= image_tag c.url(:carousel) %>
+          <span class=<%= c.video_id ? "video-mask" : "img-mask" %>></span>
+        <% end %>
+      </li>
+    <% end %>
+
+  </ul>
+  <a class="prev-concert-main" href="#"></a>
+  <a class="next-concert-main" href="#"></a>
+</div>

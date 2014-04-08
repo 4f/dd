@@ -1,0 +1,68 @@
+---
+en: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  global: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    title: Dari Dobro! - festival charity
+  concert: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    title: Concerts
+    partners: Concert's partners
+  header: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    volunteers: volunteers
+    soondate: Concert will be
+    festivalname: festival Charity
+    helptitle: Support Project
+    help: Help
+  nav: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    home: Home
+    concert: Concert
+    news: News
+    members: Members
+    help: Support Project
+    gallery: Gallery
+    contact: Contact Us
+  footer: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    copyrightfirst: ! 'Found of Charity '
+    copyrightname: «Pchelka»
+    designed: ! 'Designed by '
+  home: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    pastconcerts: Past concerts
+    partnersofconcert: ! 'Concerts partners '
+    aboutconcert: About concert
+    detail: More
+  browserdetect: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    text: It's a pitty.
+  help: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    title: Support Project
+    reqs: details
+    callback: feedback
+  news: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    rubric: Rubric
+    tags: Tags
+    author: Author
+    news: News
+    detail: More
+  members: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    title: Members
+    leading: Concert's leading
+    guest: Concerts' guest
+    children: For you played
+  gallery: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    title: Gallery
+    fotoalbom: Alboms
+    video: Video
+  contact: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    contacts: Contacts
+    goback: Come
+    call: Call
+    send: Send
+    write: Write
+    ourteam: Our team
+    callback: Feedback
+  volback: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    title_vol: Volunteer's form
+    title_back: Feedback
+    fio: Name
+    age: Age
+    tel: Phone
+    email: Email
+    text: Your text
+    send: Send
