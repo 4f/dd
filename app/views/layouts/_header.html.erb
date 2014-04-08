@@ -20,6 +20,7 @@
             <ul>
               <li><%= link_to '', {locale: :ru}, class: 'ru', accesskey: '1' %></li>
               <li><%= link_to '', {locale: :en}, class: 'eng', accesskey: '2' %></li>
+              <%= content_tag(:li, link_to('', @url_to_edit, class: 'ru', title: 'adminka')) if signed_in? %>
               <%= link_to '', @url_to_edit, hidden: true, accesskey: '0' %>
             </ul>
           </div>
