@@ -6,7 +6,7 @@
   | <%= link_to 'Редактирование', edit_concert_partner_path(@concert, @partner) %>
   | <%= link_to 'Удалить', concert_partner_path(@concert, @partner), method: :delete, data: { confirm: 'Вы уверены что хотите удалить этого партнера ?' } %>
   | <%= link_to 'Новый', new_concert_partner_path(@concert) %>
-  | <%= link_to '0', :root %>
+  | <%= link_to '0', :root, title: 'Просмотр' %>
   |
 <% end %>
 <%= h1andcontent "Партнер #{@partner.name}, #{@concert.year}" %>

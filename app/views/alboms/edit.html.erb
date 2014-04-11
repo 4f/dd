@@ -7,7 +7,7 @@
   | <%= link_to_function 'Загрузить фото', "$('input[name=UploadImage]').first().click()" %>
   | <%= link_to_function 'Выбрать обложку', "$('input[name=ChooseImage]').first().click()" %>
   | <%= link_to_function 'Удалить фото', "$('input[name=DeleteImage]').first().click()" %>
-  | <%= link_to '0', concert_albom_path %>
+  | <%= link_to '0', concert_albom_path, title: 'Просмотр' %>
   |
 <% end %>
 

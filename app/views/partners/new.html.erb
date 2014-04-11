@@ -3,7 +3,7 @@
   | <%= link_to 'Вернуться к списку', concert_partners_path %>
   | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
   | <%= link_to_function 'Отменить', "$('input[name=cancel]').first().click()" %>
-  | <%= link_to '0', :root %>
+  | <%= link_to '0', :root, title: 'Просмотр' %>
   |
 <% end %>
 <%= h1andcontent "Новый партнер, #{@concert.year}" %>

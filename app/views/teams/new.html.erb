@@ -1,7 +1,7 @@
 <% content_for :lnks2 do %>
   | <%= link_to 'К списку', :teams %>
   | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
-  | <%= link_to '0', :contacts %>
+  | <%= link_to '0', :contacts, title: 'Просмотр' %>
   |
 <% end %>
 <%= h1andcontent "Новый член команды" %>

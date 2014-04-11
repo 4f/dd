@@ -1,5 +1,9 @@
+var CKEDITOR_BASEPATH = '/ckeditor/'
+
 $(document).ready(function(){
  //  for CKE
+ 
+
  CKEDITOR.on( 'instanceReady', function( evt ) {
    var ed = evt.editor;
 

@@ -6,7 +6,7 @@
   | <%= link_to 'Новый', new_concert_partner_path(@concert), data: {confirm: 'Несохраненные данные будут утеряны, Да ?'} %>
   | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
   | <%= link_to_function 'Отменить', "$('input[name=cancel]').first().click()" %>
-  | <%= link_to '0', [@concert, @partner] %>
+  | <%= link_to '0', [@concert, @partner], title: 'Просмотр' %>
   |
 <% end %>
 <%= h1andcontent "Редактирование партнера #{@partner.name}, #{@concert.year}" %>

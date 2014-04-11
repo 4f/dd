@@ -4,7 +4,7 @@
   | <%= link_to 'Просмотр', @team %>
   | <%= link_to 'Удалить', @team, method: :delete, data: { confirm: 'Удаляем ?' } %>
   | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
-  | <%= link_to '0', contacts_path %>
+  | <%= link_to '0', contacts_path, title: 'Просмотр' %>
   |
 <% end %>
 <%= h1andcontent "#{@team.name}, редактирование" %>

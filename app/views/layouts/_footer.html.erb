@@ -8,7 +8,7 @@
       <div class="m-box-2">
         <ul class="social">
           <% Contact::SOCIAL.each_with_index do |v, i| %>
-            <%= content_tag( :li, link_to( '', Contact.find(100+i).text, class: v, target: :_blank)) unless Contact.find(100+i).text.blank? %>
+            <%= content_tag( :li, link_to( '', Contact.find(100+i).text, class: v, target: :_blank)) unless !Contact.find_by_id(100+i) || Contact.find(100+i).text.blank? %>
           <% end %>
         </ul>
         <p class="copyright"><%= t 'footer.copyrightfirst' %><span><a href="http://www.pchelka.ua/" target="_blank"><%= t 'footer.copyrightname' %></a></span> ® 2008–2014</p>

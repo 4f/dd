@@ -2,12 +2,6 @@
 module ApplicationHelper
 
 
-  def text_field_tag(name, value = nil, options = {})
-    options.merge! placeholder: :field
-    super(name, value, options)
-    
-  end
-
   def tag_to_link tag, p, p2, inverse = true  #obj, query_name_active, query_name_secotnd
     # debugger
     if inverse && params[p].include?(tag.id.to_s)

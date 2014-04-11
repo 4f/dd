@@ -3,7 +3,7 @@
   | <%= link_to 'Добавить', :new_team %>
   | <%= link_to 'Изменить', edit_team_path(@team) %>
   | <%= link_to 'Удалить', @team, method: :delete, data: { confirm: 'Удаляем ?' } %>
-  | <%= link_to '0', :contacts %>
+  | <%= link_to '0', :contacts, title: 'Просмотр' %>
   |
 <% end %>
 <%= h1andcontent "#{@team.name}" %>

@@ -4,7 +4,7 @@
   | <%= link_to_function 'Назначить на главную', "$('input[name=global]').first().click()" %>
   | <%= link_to_function 'Выбрать все', "$('input[type=checkbox]').prop('checked', true)" %>
   | <%= link_to_function 'Снять все', "$('input[type=checkbox]').prop('checked', false)" %>
-  | <%= link_to '0', :root %>
+  | <%= link_to '0', :root, title: 'Просмотр' %>
   |
 <% end %>
 <%= h1andcontent "Список партнеров, #{@concert.year}" %>

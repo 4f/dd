@@ -26,7 +26,7 @@
 <% content_for :lnks2 do %>
   | <%= link_to 'Новая', new_news_feed_path %>
   | <%= link_to 'Тэг/Рубрика', :tags_news_feeds %>
-  | <%= link_to '0', :news %>
+  | <%= link_to '0', :news, title: 'Просмотр' %>
   |
 <% end %>
 

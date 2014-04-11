@@ -264,7 +264,7 @@ h6 {
 }
 @font-face {
   font-family: 'GothaPro Medium';
-  src: url('../fonts/GothaProMed.woff') format('woff');
+  src: url('/fonts/GothaProMed.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -272,7 +272,7 @@ h6 {
 }
 @font-face {
   font-family: 'GothaPro Regular';
-  src: url('../fonts/GothaProReg.woff') format('woff');
+  src: url('/fonts/GothaProReg.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -280,7 +280,7 @@ h6 {
 }
 @font-face {
   font-family: 'GothaPro Light';
-  src: url('../fonts/GothaProLig.woff') format('woff');
+  src: url('/fonts/GothaProLig.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   -webkit-font-smoothing: antialiased;

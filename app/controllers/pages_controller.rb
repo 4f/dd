@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   def home
     @home = Home.first || Home.new
     @concert = Concert.find_announcement_year(params.fetch('id', '0'))
+    return redirect_to(:contacts) if @concert.nil?
     @partners = @concert.partners.where global: true
     @center = params[:center].blank? ? @concert : Concert.find(params[:center])
     @url_to_edit = home_edit_path

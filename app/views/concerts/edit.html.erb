@@ -1,7 +1,6 @@
 
 
 <% content_for :lnks2 do %>
-  | <%= link_to 'Главная', ura_path(@concert) %>
   | <%= link_to 'Новый', :new_concert, data: {confirm: 'Несохраненные данные будут утеряны, Да ?'} %>
   | <%= link_to_function 'Записать', "$('input[name=commit]').first().click()" %>
   | <%= link_to_function 'Отменить', "$('input[name=cancel]').first().click()" %>
@@ -10,7 +9,8 @@
   | <%= link_to 'Альбомы', concert_alboms_path(@concert) %>
   | <%= link_to 'Видео', concert_videos_path(@concert) %>
   | <%= link_to 'Страница участников', edit_concert_members_page_path(@concert) %>
-  | <%= link_to '0', :concert %>
+  | <%= link_to '0', :concert, title: 'Просмотр' %>
+  | <%= link_to '4', ura_path(@concert), title: 'Просмотр главной с этим концертом' %>
   |
 <% end %>
 

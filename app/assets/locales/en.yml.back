@@ -3,7 +3,7 @@ en: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
   global: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
     title: Dari Dobro! - festival charity
   concert: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-    title: Concerts
+    title: Concerts35
     partners: Concert's partners
   header: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
     volunteers: volunteers

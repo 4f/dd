@@ -31,14 +31,16 @@ ActiveRecord::Schema.define(:version => 60) do
     t.string   "title"
     t.text     "text"
     t.text     "tumba"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.integer  "mainfoto"
     t.string   "fototitle_file_name"
     t.string   "fototitle_content_type"
     t.integer  "fototitle_file_size"
     t.datetime "fototitle_updated_at"
   end
+
+  add_index "alboms", ["concert_id"], :name => "index_alboms_on_concert_id"
 
   create_table "carousels", :force => true do |t|
     t.integer  "concert_id"
@@ -77,8 +79,8 @@ ActiveRecord::Schema.define(:version => 60) do
     t.text     "text1"
     t.text     "text2"
     t.text     "text3"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "members_page_id"
     t.string   "title2"
     t.text     "home_pre"
@@ -176,6 +178,14 @@ ActiveRecord::Schema.define(:version => 60) do
 
   add_index "help_page_translations", ["help_page_id"], :name => "index_help_page_translations_on_help_page_id"
   add_index "help_page_translations", ["locale"], :name => "index_help_page_translations_on_locale"
+
+  create_table "help_pages", :force => true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.text     "rek"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "home_translations", :force => true do |t|
     t.integer  "home_id"

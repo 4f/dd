@@ -5,7 +5,7 @@
   | <%= link_to 'К концерту', edit_concert_path(@concert) %>
   | <%= link_to 'Добавить', :new_concert_member %>
   | <%= link_to 'Флаги', :flags %>
-  | <%= link_to '0', concert_members_page_path(@concert, @concert.members_page) %>
+  | <%= link_to '0', concert_members_page_path(@concert, @concert.members_page), title: 'Просмотр' %>
   |
 <% end %>
 <%= h1andcontent "Список участников (#{@members.count}), #{@concert.year}" %>
